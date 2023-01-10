@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 
 //route
 app.use('/authors', author);
-app.use('/authors', author);
+app.use('/books', book);
 
 //error handler
 app.use((req, res, next) =>{
