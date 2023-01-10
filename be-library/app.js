@@ -3,6 +3,7 @@ const log = require('morgan');
 const bodyParser = require('body-parser');
 
 const app = express();
+
 const book = require('./src/routes/books');
 const author = require('./src/routes/authors');
 
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 //route
+
 app.use('/authors', author);
 app.use('/books', book);
 

@@ -6,3 +6,5 @@ router.get('/', (req, res) => {
         message: ['Bookq', 'Book2']
     });
 });
+
+module.exports = router;
