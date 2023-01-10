@@ -2,7 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/', (req,res) => {
-    res.send('hi');
+    res.status(200).json({
+        author:[ 'jige', 'lodey' ]
+    })
 })
 
 // router.post('/', (req,res) => {
