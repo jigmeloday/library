@@ -1,13 +1,17 @@
 const express = require('express');
 const log = require('morgan');
-const app = express();
+const bodyParser = require('body-parser');
 
+const app = express();
 // const book = require('./src/routes/authors');
 const author = require('./src/routes/authors');
 
-app.use(log('dev'))
-
-app.use('/authors', author)
+app.use(log('dev'));
+app.use(bodyParser.urlencoded({
+    extended: false
+}));
+app.use(bodyParser.json());
+app.use('/authors', author);
 
 app.use((req, res, next) =>{
     const error = new Error('Not Found');
