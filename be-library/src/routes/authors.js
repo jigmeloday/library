@@ -7,6 +7,11 @@ router.get('/', (req,res) => {
     })
 })
 
+router.get('/:id', (req, res) =>{
+    res.status(201).json({
+        message: 'nice'
+    })
+})
 // router.post('/', (req,res) => {
 //     res.send('hello')
 // })
