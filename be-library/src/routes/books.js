@@ -65,7 +65,7 @@ router.post('/', routeGuard, upload.single('coverImage') ,(req, res, next) => {
         });
 });
 
-router.delete('/:id', (req, res, next) => {
+router.delete('/:id',routeGuard, (req, res, next) => {
     const id = req.params.id;
     Book.findByIdAndDelete(id)
         .exec()
@@ -79,7 +79,7 @@ router.delete('/:id', (req, res, next) => {
         .catch((err) => res.status(500).json({message: err}))
 })
 
-router.patch('/:id', ( req,res, next ) => {
+router.patch('/:id',routeGuard, ( req,res, next ) => {
      const id = req.params.id;
      const updateVal = {};
      for (const ops of req.body) {
