@@ -3,6 +3,7 @@ const multer = require('multer');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Book = require('../models/book');
+const routeGuard = require('../route-guard/route-guard');
 
 const storage = multer.diskStorage({
     destination: function (req, file,cb) {
@@ -35,7 +36,7 @@ router.get('/:id', (req, res) => {
    })
 });
 
-router.post('/', upload.single('coverImage') ,(req, res, next) => {
+router.post('/', routeGuard, upload.single('coverImage') ,(req, res, next) => {
     const book = new Book({
         _id:  new mongoose.Types.ObjectId(),
         title: req.body.title,
