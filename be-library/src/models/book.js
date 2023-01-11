@@ -3,16 +3,16 @@ const bookSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
     title: {
         type: String,
-        require: true
+        required: true
     },
     author: {
         type:String,
-        require: true
+        required: true
     },
     price: Number,
     category: {
         type: String,
-        require: true
+        required: true
     },
     summary: String,
 });
