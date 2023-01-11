@@ -31,6 +31,7 @@ router.post('/', (req, res, next) => {
         isbn: req.body.isbn,
         category: req.body.category,
         price: req.body.price,
+        quantity: req.body.quantity || 1,
         summary: req.body.summary,
         author: req.body.author,
     })
