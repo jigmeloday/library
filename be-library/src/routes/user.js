@@ -19,12 +19,12 @@ router.post('/signup', (req, res, next) => {
                     if (resp) {
                         res.status(201).json({message: 'user created'})
                     } else {
-                        res.status(401).json({message: 'bad request'})
+                        res.status(400).json({message: 'bad request'})
                     }
                 })
                 .catch((err) => {
                     if (err.code === 11000){
-                        res.status(401).json({message: 'email already taken'})
+                        res.status(400).json({message: 'email already taken'})
                     }else{
                         res.status(500).json({message: err})
                     }
@@ -32,6 +32,23 @@ router.post('/signup', (req, res, next) => {
         }
     });
 });
+
+router.post('/signin', (req, res, next) => {
+    User.find({email: req.body.email}).exec().then((user) => {
+        if (!user.length) {
+           return res.status(401).json({message: 'Unauthorized'});
+        }
+        bcrypt.compare(req.body.password, user[0].password, (err, success) => {
+            if (err) {
+                return res.status(401).json({message: 'Unauthorized'});
+            }
+            if (success) {
+                return res.status(200).json({ message: 'Sign In Success' })
+            }
+            res.status(401).json({message: 'Unauthorized'});
+        } )
+    })
+})
 
 router.get('/', (req, res,next) => {
     User.find().select('email').exec().then((user) => {

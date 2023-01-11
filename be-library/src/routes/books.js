@@ -54,7 +54,7 @@ router.post('/', upload.single('coverImage') ,(req, res, next) => {
                     message: book
                 });
             } else{
-                res.status(401).json({
+                res.status(400).json({
                     message: 'bad request'
                 });
             }
@@ -91,7 +91,7 @@ router.patch('/:id', ( req,res, next ) => {
              if (resp) {
                  res.status(201).json({book: resp})
              }else{
-                 res.status(401).json({error: 'not working'})
+                 res.status(400).json({error: 'not working'})
              }
          })
          .catch((error) => res.status(500).json({message:error }))
