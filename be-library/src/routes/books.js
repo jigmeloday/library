@@ -28,6 +28,7 @@ router.post('/', (req, res, next) => {
     const book = new Book({
         _id:  new mongoose.Types.ObjectId(),
         title: req.body.title,
+        isbn: req.body.isbn,
         category: req.body.category,
         price: req.body.price,
         summary: req.body.summary,
