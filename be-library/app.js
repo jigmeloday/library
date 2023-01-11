@@ -6,6 +6,7 @@ const app = express();
 
 const book = require('./src/routes/books');
 const author = require('./src/routes/authors');
+const user = require('./src/routes/user');
 
 
 //Logger
@@ -31,6 +32,7 @@ app.use(bodyParser.json());
 //route
 app.use('/authors', author);
 app.use('/books', book);
+app.use('/user', user)
 
 //error handler
 app.use((req, res, next) =>{
