@@ -1,7 +1,18 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
 const mongoose = require('mongoose');
 const Book = require('../models/book');
+
+const storage = multer.diskStorage({
+    destination: function (req, file,cb) {
+        cb(null, './files/');
+    },
+    filename: function (req, file, cb) {
+        cb(null, new Date().toISOString() + file.originalname);
+    }
+})
+const upload = multer({storage});
 
 router.get('/', (req, res) => {
     Book.find().exec().then((resp) => res.status(200).json({books: resp}).catch((err) => {
@@ -24,7 +35,7 @@ router.get('/:id', (req, res) => {
    })
 });
 
-router.post('/', (req, res, next) => {
+router.post('/', upload.single('coverImage') ,(req, res, next) => {
     const book = new Book({
         _id:  new mongoose.Types.ObjectId(),
         title: req.body.title,
@@ -33,6 +44,7 @@ router.post('/', (req, res, next) => {
         price: req.body.price,
         quantity: req.body.quantity || 1,
         summary: req.body.summary,
+        coverImage: req.file.path,
         author: req.body.author,
     })
     book.save()

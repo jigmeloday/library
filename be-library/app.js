@@ -10,6 +10,7 @@ const author = require('./src/routes/authors');
 
 //Logger
 app.use(log('dev'));
+app.use('/files',express.static('files'))
 
 //bodyParser
 
@@ -17,7 +18,6 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
-
 //CORS
 // app.use((req,res, next) =>{
 //     res.header('Access-Control-Allow-Origin', '*');
