@@ -7,6 +7,7 @@ const AuthRoute = lazy(() => import('../auth-route/auth-route'));
 const BookRoute = lazy(() => import('../book-route/book-route'));
 const CategoryRoute = lazy(() => import('../category-route/category-route'));
 const Author = lazy(() => import('../author-route/author-route'));
+const UserRoute = lazy(() => import('../user-route/user-route'));
 
 export function CoreRoute() {
     const CORE_ROUTE: RouteModel[] = [
@@ -35,7 +36,16 @@ export function CoreRoute() {
             component: <AuthRoute/>,
             route: '/account-creation/*'
         },
-
+        {
+            id: '6',
+            component: <UserRoute/>,
+            route: '/profile/*'
+        },
+        {
+            id: '7',
+            component: <>User</>,
+            route: '/:id'
+        }
     ];
 
     return(
