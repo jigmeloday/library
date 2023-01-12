@@ -24,7 +24,8 @@
     "react-serialize": "^0.2.1",
     "styled-components": "^5.3.6",
     "typescript": "^4.4.2",
-    "web-vitals": "^2.1.0"
+    "web-vitals": "^2.1.0",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "PORT=4200 react-scripts start",
