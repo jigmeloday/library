@@ -4,6 +4,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Book = require('../models/book');
 const routeGuard = require('../route-guard/route-guard');
+const bookController = require('../controllers/book.controller')
 
 const storage = multer.diskStorage({
     destination: function (req, file,cb) {
@@ -15,12 +16,7 @@ const storage = multer.diskStorage({
 })
 const upload = multer({storage});
 
-router.get('/', (req, res) => {
-    Book.find().exec().then((resp) => res.status(200).json({books: resp}).catch((err) => {
-            res.status(500).json({message: err})
-        })
-    )
-});
+router.get('/',  bookController.get_books);
 
 router.get('/:id', (req, res) => {
    Book.findById(req.params.id).exec().then((book) =>
