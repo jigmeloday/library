@@ -1,16 +1,19 @@
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { Routes, Route} from "react-router-dom";
 import { RouteModel } from '../../shared/models/shared.model';
+
+const Category = lazy(() => import('../../pages/category/category'));
+const CategoryDetails = lazy(() => import('../../pages/category/category-details'));
 
 export function CategoryRoute() {
     const CORE_ROUTE: RouteModel[] = [
         {
             id: '1',
-            component: <>category</>,
+            component: <Category/>,
             route: '/'
         },{
             id: '2',
-            component: <>category Details</>,
+            component: <CategoryDetails/>,
             route: '/:id'
         },
     ];

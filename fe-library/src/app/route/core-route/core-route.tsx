@@ -44,7 +44,7 @@ export function CoreRoute() {
         {
             id: '7',
             component: <>User</>,
-            route: '/:id'
+            route: '/user/:id'
         }
     ];
 
