@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Profile = require('../models/profile');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
@@ -40,10 +41,23 @@ exports.user_signup = (req, res, next) => {
                 email: req.body.email,
                 password: hash
             });
+            const profile = new Profile({
+                _id: new mongoose.Types.ObjectId(),
+                email: req.body.email,
+                uid: user.id
+            })
             user.save()
                 .then((resp) =>{
                     if (resp) {
-                        res.status(201).json({message: 'user created'});
+                        profile.save()
+                            .then((resp) => {
+                                if (resp) {
+                                    res.status(201).json({message: 'user created'});
+                                } else{
+                                    res.status(400).json({message: 'bad request profile creation'});
+                                }
+                            })
+                            .catch((error) =>   res.status(500).json({message: error}))
                     } else {
                         res.status(400).json({message: 'bad request'});
                     }
