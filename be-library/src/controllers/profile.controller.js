@@ -14,9 +14,7 @@ exports.get_profile = (req, res, next) => {
 exports.update_profile = (req, res, next) => {
     const id = req.params.id;
     const updateVal = req.body;
-    // for (const ops of req.body) {
-    //     updateVal[ops.propName] = ops.value;
-    // }
+
     Profile.updateOne({ _id: id }, updateVal )
         .exec()
         .then((resp) =>{
