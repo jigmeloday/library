@@ -1,10 +1,12 @@
-import { lazy, Suspense } from "react";
-import { Routes, Route} from "react-router-dom";
+import { lazy, Suspense } from 'react';
+import { Routes, Route} from 'react-router-dom';
 import { RouteModel } from '../../shared/models/shared.model';
 import Home from '../../pages/home/home';
 
-const AuthRoute = lazy(() => import('../auth-route/auth-route'))
-const BookRoute = lazy(() => import('../book-route/book-route'))
+const AuthRoute = lazy(() => import('../auth-route/auth-route'));
+const BookRoute = lazy(() => import('../book-route/book-route'));
+const CategoryRoute = lazy(() => import('../category-route/category-route'));
+
 export function CoreRoute() {
     const CORE_ROUTE: RouteModel[] = [
         {
@@ -18,13 +20,9 @@ export function CoreRoute() {
             route: '/books/*'
         },
         {
-            id: '4',
-            component: <>category</>,
-            route: '/categories'
-        },{
-            id: '5',
-            component: <>category Details</>,
-            route: '/category/:id'
+            id: '3',
+            component: <CategoryRoute/>,
+            route: '/categories/*'
         },
         {
             id: '6',
