@@ -11,6 +11,7 @@ const Author = lazy( () => import('../author-route/author-route') );
 const UserRoute = lazy( () => import('../user-route/user-route') );
 const Header = lazy( () => import('../../components/header/header') );
 const Landing = lazy( () => import('../../pages/home/home') );
+const Footer = lazy(() => import('../../components/footer/footer.component'));
 
 export function CoreRoute() {
     const url = useLocation().pathname;
@@ -74,7 +75,7 @@ export function CoreRoute() {
                 </Grid>
             </Grid>
             <Grid item alignSelf='end' xs={ 12 }>
-                <Header/>
+                <Footer/>
             </Grid>
         </Grid>
     )

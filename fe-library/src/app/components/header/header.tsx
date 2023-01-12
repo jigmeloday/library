@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { HeaderContainer } from './header.style';
-import { Box, Grid } from '@mui/material';
+import { Box, Grid, Typography } from '@mui/material';
 import { NAVIGATION } from './constant/header.constant';
 
 export function HeaderComponent() {
@@ -12,9 +12,14 @@ export function HeaderComponent() {
                 </Grid>
                 <Grid item container xs={6} >
                    <Grid item container xs={8} justifyContent='end'>
-                       {
-                           NAVIGATION.map(({ id, path, label }) => <Box key={id}>{label}</Box>)
-                       }
+                       <Box display='flex' flexDirection='row' justifyContent='space-around' >
+                           {
+                               NAVIGATION.map(({ id, path, label }) =>
+                                   <Typography key={id}>{label}</Typography>
+                               )
+                           }
+                       </Box>
+
                    </Grid>
                     <Grid item container justifyContent='end' xs={4}>
                         hello
