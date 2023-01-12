@@ -2,7 +2,7 @@ const Profile = require('../models/profile')
 
 exports.get_profile = (req, res, next) => {
     const id = req.params.id;
-    Profile.findById(id).exec().then((profile) => {
+    Profile.findOne({uid:id}).exec().then((profile) => {
         if (profile) {
             res.status(200).json({ profile })
         } else{

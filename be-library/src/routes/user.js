@@ -9,4 +9,6 @@ router.post('/signin', UserController.user_login );
 
 router.delete('/:id', UserController.user_delete);
 
+router.get('/users', UserController.get_users )
+
 module.exports = router;

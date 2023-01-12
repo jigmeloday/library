@@ -40,20 +40,20 @@ exports.user_signup = (req, res, next) => {
                 email: req.body.email,
                 password: hash
             });
-            const profile = new Profile({
-                _id: new mongoose.Types.ObjectId(),
-                email: req.body.email,
-                uid: user.id,
-                name: '',
-                firstName: '',
-                lastName: '',
-                phone: '',
-                code: '',
-                country: '',
-            })
             user.save()
                 .then((resp) =>{
                     if (resp) {
+                        const profile = new Profile({
+                            _id: new mongoose.Types.ObjectId(),
+                            email: req.body.email,
+                            uid: resp.id,
+                            name: '',
+                            firstName: '',
+                            lastName: '',
+                            phone: '',
+                            code: '',
+                            country: '',
+                        })
                         profile.save()
                             .then((resp) => {
                                 if (resp) {
@@ -96,4 +96,11 @@ exports.user_delete = (req, res,next) => {
     });
 }
 
-
+exports.get_users = ( req, res, next ) => {
+    Profile.find()
+        .exec()
+        .then((resp) => {
+                res.status(200).json({user: resp})
+        })
+        .catch((error) => res.status(500).json({message: error}) )
+}
