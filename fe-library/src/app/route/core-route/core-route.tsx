@@ -1,19 +1,22 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { RouteModel } from '../../shared/models/shared.model';
-import Home from '../../pages/home/home';
+import { Grid } from '@mui/material';
 
 const AuthRoute = lazy(() => import('../auth-route/auth-route'));
 const BookRoute = lazy(() => import('../book-route/book-route'));
 const CategoryRoute = lazy(() => import('../category-route/category-route'));
 const Author = lazy(() => import('../author-route/author-route'));
 const UserRoute = lazy(() => import('../user-route/user-route'));
+const Header = lazy(() => import('../../components/header/header'));
+const Landing = lazy(() => import('../../pages/home/home'));
 
 export function CoreRoute() {
+    const url = useLocation().pathname;
     const CORE_ROUTE: RouteModel[] = [
         {
             id: '1',
-            component: <Home/>,
+            component: <Landing/>,
             route: '/'
         },
         {
@@ -50,14 +53,23 @@ export function CoreRoute() {
 
     return(
         <Suspense fallback='loading...'>
-            <Routes>
-                {
-                    CORE_ROUTE.map(({ id, route, component }) =>
-                        <Route key={`${route}+${id}`} path={route} element={component} />
-                    )
-                }
-                <Route path={'*'} element={<>404</>} />
-            </Routes>
+            <Grid container item direction='column'>
+                <Grid item container>
+                    {
+                        url.includes('account-creation') ? null : <Header/>
+                    }
+                </Grid>
+                <Grid item container>
+                    <Routes>
+                        {
+                            CORE_ROUTE.map(({ id, route, component }) =>
+                                <Route key={`${route}+${id}`} path={route} element={component} />
+                            )
+                        }
+                        <Route path={'*'} element={<>404</>} />
+                    </Routes>
+                </Grid>
+            </Grid>
         </Suspense>
     )
 }
