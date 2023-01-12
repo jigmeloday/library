@@ -7,11 +7,11 @@ const app = express();
 const book = require('./src/routes/books');
 const author = require('./src/routes/authors');
 const user = require('./src/routes/user');
-
+const profile = require('./src/routes/profiles');
 
 //Logger
 app.use(log('dev'));
-app.use('/files',express.static('files'))
+app.use('/files',express.static('files'));
 
 //bodyParser
 
@@ -32,7 +32,8 @@ app.use(bodyParser.json());
 //route
 app.use('/authors', author);
 app.use('/books', book);
-app.use('/user', user)
+app.use('/user', user);
+app.use('/profile', profile);
 
 //error handler
 app.use((req, res, next) =>{
