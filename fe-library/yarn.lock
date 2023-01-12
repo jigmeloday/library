@@ -7859,6 +7859,11 @@ react-scripts@5.0.1:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-serialize@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/react-serialize/-/react-serialize-0.2.1.tgz#5ec06aa11b8f22efbd520e415c6142ce9a70a93c"
+  integrity sha512-oTt/9xxrBt+7KxCrhZqmF3nZTGRNpb0d55eXnzApgeYXA7uVrZAfyhTAf/vvzxYP4JOSQUTNI/Hs4GdxMys3Sg==
+
 react-transition-group@^4.4.5:
   version "4.4.5"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.5.tgz#e53d4e3f3344da8521489fbef8f2581d42becdd1"
