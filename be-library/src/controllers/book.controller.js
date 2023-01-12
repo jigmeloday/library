@@ -25,12 +25,9 @@ exports.get_book_by_id = (req, res) => {
 
 exports.update_book = ( req,res, next ) => {
     const id = req.params.id;
-    const updateVal = {};
-    for (const ops of req.body) {
-        updateVal[ops.propName] = ops.value;
-    }
+    const updateVal = req.body;
 
-    Book.update({_id, id}, { $set: updateVal })
+    Book.updateOne({_id: id}, { $set: updateVal })
         .exec()
         .then((resp) =>{
             if (resp) {
