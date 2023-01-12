@@ -44,7 +44,13 @@ exports.user_signup = (req, res, next) => {
             const profile = new Profile({
                 _id: new mongoose.Types.ObjectId(),
                 email: req.body.email,
-                uid: user.id
+                uid: user.id,
+                name: '',
+                firstName: '',
+                lastName: '',
+                phone: '',
+                code: '',
+                country: '',
             })
             user.save()
                 .then((resp) =>{
