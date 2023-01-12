@@ -6,10 +6,12 @@ const app = express();
 
 const book = require('./src/routes/books');
 const author = require('./src/routes/authors');
+const user = require('./src/routes/user');
 
 
 //Logger
 app.use(log('dev'));
+app.use('/files',express.static('files'))
 
 //bodyParser
 
@@ -17,7 +19,6 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(bodyParser.json());
-
 //CORS
 // app.use((req,res, next) =>{
 //     res.header('Access-Control-Allow-Origin', '*');
@@ -31,6 +32,7 @@ app.use(bodyParser.json());
 //route
 app.use('/authors', author);
 app.use('/books', book);
+app.use('/user', user)
 
 //error handler
 app.use((req, res, next) =>{
