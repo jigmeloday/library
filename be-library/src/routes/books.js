@@ -1,8 +1,6 @@
 const express = require('express');
 const multer = require('multer');
 const router = express.Router();
-const mongoose = require('mongoose');
-const Book = require('../models/book');
 const routeGuard = require('../route-guard/route-guard');
 const bookController = require('../controllers/book.controller')
 
