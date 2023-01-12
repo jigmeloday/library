@@ -6,6 +6,7 @@ import Home from '../../pages/home/home';
 const AuthRoute = lazy(() => import('../auth-route/auth-route'));
 const BookRoute = lazy(() => import('../book-route/book-route'));
 const CategoryRoute = lazy(() => import('../category-route/category-route'));
+const Author = lazy(() => import('../author-route/author-route'));
 
 export function CoreRoute() {
     const CORE_ROUTE: RouteModel[] = [
@@ -25,20 +26,12 @@ export function CoreRoute() {
             route: '/categories/*'
         },
         {
-            id: '6',
-            component: <>Author</>,
-            route: '/Authors'
-        },{
-            id: '7',
-            component: <>Author</>,
-            route: '/Author/:id'
-        },{
-            id: '7',
-            component: <>Author</>,
-            route: '/Author/:id'
+            id: '4',
+            component: <Author/>,
+            route: '/authors/*'
         },
         {
-            id: '8',
+            id: '5',
             component: <AuthRoute/>,
             route: '/account-creation/*'
         },

@@ -12,7 +12,7 @@ export function BookRoute() {
         {
             id: '2',
             component: <>Book details</>,
-            route: '/book/:id'
+            route: '/:id'
         }
     ];
 

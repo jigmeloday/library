@@ -2,17 +2,18 @@ import { Suspense } from "react";
 import { Routes, Route} from "react-router-dom";
 import { RouteModel } from '../../shared/models/shared.model';
 
-export function CategoryRoute() {
+export function AuthorRoute() {
     const CORE_ROUTE: RouteModel[] = [
         {
             id: '1',
-            component: <>category</>,
+            component: <>AuthorRoute</>,
             route: '/'
-        },{
-            id: '2',
-            component: <>category Details</>,
-            route: '/:id'
         },
+        {
+            id: '2',
+            component: <>AuthorRoute</>,
+            route: '/:id'
+        }
     ];
 
     return(
@@ -21,11 +22,11 @@ export function CategoryRoute() {
                 {
                     CORE_ROUTE.map(({ id, route, component }) =>
                         <Route key={`${route}+${id}`} path={route} element={component} />
-                    )
-                }
-                <Route path={'*'} element={<>404</>} />
-            </Routes>
-        </Suspense>
-    )
+)
 }
-export default CategoryRoute;
+    <Route path={'*'} element={<>404</>} />
+        </Routes>
+        </Suspense>
+)
+}
+    export default AuthorRoute;
