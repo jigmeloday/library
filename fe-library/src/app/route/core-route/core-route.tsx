@@ -8,14 +8,14 @@ export function CoreRoute() {
     const AUTHENTICATED_ROUTE: RouteModel[] = [
         {
             id: '1',
-            component: <>hello</>,
+            component: <Home/>,
             route: ''
         }
     ];
     const UNAUTHENTICATED_ROUTE: RouteModel[] = [
         {
             id: '1',
-            component: <>hello</>,
+            component: <Home/>,
             route: ''
         }
     ]
