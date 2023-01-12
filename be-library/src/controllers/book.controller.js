@@ -30,7 +30,7 @@ exports.update_book = ( req,res, next ) => {
         updateVal[ops.propName] = ops.value;
     }
 
-    Book.update({_id, id}, { $set: updateVal })
+    Book.update({_id: id}, { $set: updateVal })
         .exec()
         .then((resp) =>{
             if (resp) {

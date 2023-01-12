@@ -13,14 +13,15 @@ exports.get_profile = (req, res, next) => {
 
 exports.update_profile = (req, res, next) => {
     const id = req.params.id;
+    const updateVal = {};
     for (const ops of req.body) {
         updateVal[ops.propName] = ops.value;
     }
-    Profile.update({_id, id}, { $set: updateVal })
+    Profile.findByIdAndUpdate({ _id: id }, { $set: updateVal })
         .exec()
         .then((resp) =>{
             if (resp) {
-                res.status(201).json({book: resp})
+                res.status(201).json({profile: resp})
             }else{
                 res.status(400).json({error: 'not working'})
             }
