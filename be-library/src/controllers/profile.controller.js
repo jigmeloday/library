@@ -26,10 +26,3 @@ exports.update_profile = (req, res, next) => {
         })
         .catch((error) => res.status(500).json({message:error }))
 }
-
-exports.get_profiles = (req, res, next) => {
-    Profile.find().exec().then((resp) => {
-        res.status(200).json({ resp })
-    }).catch(error => res.status(500).json({message: error}))
-
-}

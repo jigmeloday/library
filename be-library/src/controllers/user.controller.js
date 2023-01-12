@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
 
-
 exports.user_login = (req, res, next) => {
     User.find({email: req.body.email}).exec().then((user) => {
         if (!user.length) {
@@ -83,7 +82,12 @@ exports.user_delete = (req, res,next) => {
     const id = req.params.id;
     User.findByIdAndDelete(id).exec().then((user) =>{
         if (user) {
-            res.status(201).json({message: user });
+            Profile.deleteOne({ uid: id })
+                .exec()
+                .then((resp) => {
+                    resp ? res.status(201).json({ message: 'user deleted' }): res.status(404).json({message: 'user not found'})
+                } )
+                .catch((error) => res.status(400).json({message: 'something went wrong'}))
         } else {
             res.status(404).json({message: 'user not found'});
         }
@@ -92,8 +96,4 @@ exports.user_delete = (req, res,next) => {
     });
 }
 
-exports.user_listing = (req, res,next) => {
-    User.find().select('email').exec().then((user) => {
-        res.status(200).json({user});
-    }).catch((error) => res.status(500).json({message: error}));
-}
+

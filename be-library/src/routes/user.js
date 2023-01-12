@@ -7,8 +7,6 @@ router.post('/signup', UserController.user_signup);
 
 router.post('/signin', UserController.user_login );
 
-router.get('/', routeGuard, UserController.user_listing);
-
-router.delete('/:id', routeGuard, UserController.user_delete);
+router.delete('/:id', UserController.user_delete);
 
 module.exports = router;
