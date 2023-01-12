@@ -21,3 +21,22 @@ exports.get_book_by_id = (req, res) => {
         res.status(500).json({ message: err })
     })
 }
+
+exports.update_book = ( req,res, next ) => {
+    const id = req.params.id;
+    const updateVal = {};
+    for (const ops of req.body) {
+        updateVal[ops.propName] = ops.value;
+    }
+
+    Book.update({_id, id}, { $set: updateVal })
+        .exec()
+        .then((resp) =>{
+            if (resp) {
+                res.status(201).json({book: resp})
+            }else{
+                res.status(400).json({error: 'not working'})
+            }
+        })
+        .catch((error) => res.status(500).json({message:error }))
+}
