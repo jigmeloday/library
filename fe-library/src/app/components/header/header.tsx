@@ -1,10 +1,18 @@
-import { memo } from 'react';
+import { memo, useEffect, useState } from 'react';
 import { HeaderContainer } from './header.style';
 import { Box, Grid } from '@mui/material';
 import { NAVIGATION } from './constant/header.constant';
 import { Typography } from '../../shared/components/typography/typography.component';
+import { theme } from '../../../assest/theme';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export function HeaderComponent() {
+    const [active, setActive] = useState<string>('/');
+    const url = useLocation().pathname;
+    const nav = useNavigate();
+    useEffect(() => {
+        setActive(url)
+    }, [url])
     return(
         <HeaderContainer>
             <Grid item container direction='row'>
@@ -17,7 +25,11 @@ export function HeaderComponent() {
                              {
                                  NAVIGATION.map(({ id, path, label }) =>
                                      <Grid item key={`${id}+${path}`} className='cursor--pointer'>
-                                     <Typography label={label} click={() => console.log(path)} />
+                                     <Typography label={label}
+                                                 color={ active === path ?
+                                                     theme('light').palette.primary.main :
+                                                     theme('light').palette.black.main}
+                                                 click={() => nav(path)} />
                                      </Grid>
 
                                  )
@@ -25,7 +37,7 @@ export function HeaderComponent() {
 
                    </Grid>
                     <Grid item container justifyContent='end' xs={4}>
-                        hello
+                        Login
                     </Grid>
                 </Grid>
             </Grid>

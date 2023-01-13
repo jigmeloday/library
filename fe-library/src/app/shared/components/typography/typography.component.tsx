@@ -4,7 +4,7 @@ import { CustomTypography } from './typography.style';
 
 export function Typography(props: TypographyProps) {
     return(
-       <CustomTypography onClick={props.click}>
+       <CustomTypography color={props.color} onClick={props.click}>
            {props?.label}
        </CustomTypography>
     )
