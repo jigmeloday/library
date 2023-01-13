@@ -1,8 +1,12 @@
 import { memo } from 'react';
+import { CustomButton } from './button.style';
+import { ButtonProps } from './model/button.model';
 
-export function Button() {
+export function Button(props: ButtonProps) {
     return(
-        <>hello</>
+        <CustomButton onClick={props.click}>
+            {props.label}
+        </CustomButton>
     )
 }
 
