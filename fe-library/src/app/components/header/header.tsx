@@ -38,7 +38,7 @@ export function HeaderComponent() {
 
                    </Grid>
                     <Grid item container justifyContent='end' xs={4}>
-                       <Button click={() => nav('/account-creation/login')} label='Login' variant='contained' color='primary'  />
+                       <Button click={() => nav('/authentication/login')} label='Login' variant='contained' color='primary'  />
                     </Grid>
                 </Grid>
             </Grid>

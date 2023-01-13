@@ -39,7 +39,7 @@ export function CoreRoute() {
         {
             id: '5',
             component: <AuthRoute/>,
-            route: '/account-creation/*'
+            route: '/authentication/*'
         },
         {
             id: '6',
@@ -58,7 +58,7 @@ export function CoreRoute() {
             <Grid item container direction='column'>
                 <Grid item container>
                     {
-                        url.includes( 'account-creation' ) ? null : <Header/>
+                        url.includes( 'authentication' ) ? null : <Header/>
                     }
                 </Grid>
                 <Grid item container>
