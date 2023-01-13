@@ -1,5 +1,17 @@
+import { SxProps, Theme } from '@mui/material';
+import { MatColors, MatVariants } from '../../../models/shared.model';
+
 export interface ButtonProps {
-    click: () => void;
-    label: string;
-    color: string;
+    label?: string;
+    sx?: SxProps<Theme>;
+    child?: JSX.Element;
+    color?: MatColors;
+    variant?: MatVariants;
+    disabled?: boolean;
+    click?: () => void;
+    className?: string;
+    startIcon?: React.ReactNode;
+    endIcon?: React.ReactNode;
+    type?: 'submit' | 'reset' | 'button';
+    id?: string;
 }

@@ -5,6 +5,7 @@ import { NAVIGATION } from './constant/header.constant';
 import { Typography } from '../../shared/components/typography/typography.component';
 import { theme } from '../../../assest/theme';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Button } from '../../shared/components/button/button.component';
 
 export function HeaderComponent() {
     const [active, setActive] = useState<string>('/');
@@ -37,7 +38,7 @@ export function HeaderComponent() {
 
                    </Grid>
                     <Grid item container justifyContent='end' xs={4}>
-                        Login
+                       <Button label='Login' variant='contained' color='primary'  />
                     </Grid>
                 </Grid>
             </Grid>

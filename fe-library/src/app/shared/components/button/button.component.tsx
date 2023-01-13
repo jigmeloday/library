@@ -4,7 +4,10 @@ import { ButtonProps } from './model/button.model';
 
 export function Button(props: ButtonProps) {
     return(
-        <CustomButton onClick={props.click}>
+        <CustomButton
+            variant={props?.variant}
+            color={props?.color}
+            onClick={props?.click}>
             {props.label}
         </CustomButton>
     )
