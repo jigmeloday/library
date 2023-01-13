@@ -75,7 +75,9 @@ export function CoreRoute() {
                 </Grid>
             </Grid>
             <Grid item alignSelf='end' xs={ 12 }>
-                <Footer/>
+                {
+                    url === '/' && <Footer />
+                }
             </Grid>
         </Grid>
     )
