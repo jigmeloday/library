@@ -3,20 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ThemeProvider } from '@mui/material';
-import { theme } from './assest/theme';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './app/store/rkt.store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-      <ThemeProvider theme={theme('light')}>
+      <Provider store={store}>
           <BrowserRouter>
               <App />
           </BrowserRouter>
-      </ThemeProvider>
+      </Provider>
   </React.StrictMode>
 );
 
