@@ -62,7 +62,7 @@ export function CoreRoute() {
                     }
                 </Grid>
                 <Grid item container>
-                    <Suspense>
+                    <Suspense fallback={'loging'}>
                         <Routes>
                             {
                                 CORE_ROUTE.map( ( { id, route, component } ) =>
