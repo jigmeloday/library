@@ -8,14 +8,14 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../../shared/components/button/button.component';
 import { ProfileContainer } from '../profile-image/profile-image.style';
 import { ProfileImage } from '../../shared/utils/shared.utils';
+import { useSelector } from 'react-redux';
+import { selectToken } from '../../services/states/credential-state/credential.slice';
 
 export function HeaderComponent() {
-    const [active, setActive] = useState<string>('/');
     const url = useLocation().pathname;
     const nav = useNavigate();
-    useEffect(() => {
-        setActive(url)
-    }, [url])
+    const token = useSelector(selectToken);
+
     return(
         <HeaderContainer>
             <Grid item container direction='row' alignItems='center' >
@@ -29,7 +29,7 @@ export function HeaderComponent() {
                                  NAVIGATION.map(({ id, path, label }) =>
                                      <Grid item key={`${id}+${path}`} className='cursor--pointer'>
                                      <Typography label={label}
-                                                 color={ active === path ?
+                                                 color={ url === path ?
                                                      theme('light').palette.primary.main :
                                                      theme('light').palette.black.main}
                                                  click={() => nav(path)} />
@@ -40,6 +40,9 @@ export function HeaderComponent() {
 
                    </Grid>
                     <Grid item container justifyContent='end' xs={2}>
+                        {
+
+                        }
                         <ProfileContainer
                             borderRadius={50}
                             border={`4px solid
