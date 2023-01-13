@@ -61,3 +61,6 @@
     border-radius: 8px;
 }
 
+.border-radius-full{
+    border-radius: 50%;
+}
