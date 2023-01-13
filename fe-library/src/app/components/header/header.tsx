@@ -1,7 +1,8 @@
 import { memo } from 'react';
 import { HeaderContainer } from './header.style';
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { NAVIGATION } from './constant/header.constant';
+import { Typography } from '../../shared/components/typography/typography.component';
 
 export function HeaderComponent() {
     return(
@@ -11,14 +12,16 @@ export function HeaderComponent() {
                     Logo
                 </Grid>
                 <Grid item container xs={6} >
-                   <Grid item container xs={8} justifyContent='end'>
-                       <Box display='flex' flexDirection='row' justifyContent='space-around' >
-                           {
-                               NAVIGATION.map(({ id, path, label }) =>
-                                   <Typography key={id}>{label}</Typography>
-                               )
-                           }
-                       </Box>
+                   <Grid item container direction='row' xs={8} justifyContent='space-around'>
+
+                             {
+                                 NAVIGATION.map(({ id, path, label }) =>
+                                     <Grid item key={`${id}+${path}`} className='cursor--pointer'>
+                                     <Typography label={label} click={() => console.log(path)} />
+                                     </Grid>
+
+                                 )
+                             }
 
                    </Grid>
                     <Grid item container justifyContent='end' xs={4}>
