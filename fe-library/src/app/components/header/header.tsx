@@ -34,26 +34,25 @@ export function HeaderComponent() {
                                                      theme('light').palette.black.main}
                                                  click={() => nav(path)} />
                                      </Grid>
-
                                  )
                              }
-
                    </Grid>
                     <Grid item container justifyContent='end' xs={2}>
                         {
-
-                        }
-                        <ProfileContainer
-                            borderRadius={50}
-                            border={`4px solid
+                            token.length ?
+                                <ProfileContainer
+                                    borderRadius={50}
+                                    border={`4px solid
                              ${theme('light').palette.grey.A100}`}
-                            width='60px' height='60px'
-                            className='cursor--pointer'
-                        >
-                            <img src={ProfileImage} width='100%' height='100%'   className='object-fit--cover border-radius-full'
-                            />
-                        </ProfileContainer>
-                       {/*<Button click={() => nav('/authentication/login')} label='Login' variant='contained' color='primary'  />*/}
+                                    width='60px' height='60px'
+                                    className='cursor--pointer'
+                                >
+                                    <img src={ProfileImage} width='100%' height='100%'   className='object-fit--cover border-radius-full'
+                                    />
+                                </ProfileContainer> :
+                                <Button click={() => nav('/authentication/login')} label='Login' variant='contained' color='primary'  />
+                        }
+
                     </Grid>
                 </Grid>
             </Grid>
