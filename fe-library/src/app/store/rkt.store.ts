@@ -3,19 +3,26 @@ import persistStore  from 'redux-persist/es/persistStore';
 import { Persistor, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { SHARED_STATE_KEY, sharedReducer, SharedStateInterface } from '../services/states/shared-state/shared.slice';
+import {
+    CREDENTIAL_STATE_KEY,
+    credentialReducer,
+    CredentialStateInterface
+} from '../services/states/credential-state/credential.slice';
 
 export interface IReducer {
-    [ SHARED_STATE_KEY ]: SharedStateInterface
+    [ SHARED_STATE_KEY ]: SharedStateInterface;
+    [ CREDENTIAL_STATE_KEY ]: CredentialStateInterface;
 }
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: [  ]
+    whitelist: [ CREDENTIAL_STATE_KEY ]
 };
 
 const REDUCER: Reducer<CombinedState<IReducer>> = combineReducers({
-    [ SHARED_STATE_KEY ] : sharedReducer
+    [ SHARED_STATE_KEY ] : sharedReducer,
+    [ CREDENTIAL_STATE_KEY ] : credentialReducer
 });
 
 
