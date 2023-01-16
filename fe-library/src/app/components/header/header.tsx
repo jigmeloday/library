@@ -34,10 +34,8 @@ export function HeaderComponent() {
                                                      theme('light').palette.black.main}
                                                  click={() => nav(path)} />
                                      </Grid>
-
                                  )
                              }
-
                    </Grid>
                     <Grid item container justifyContent='end' xs={2}>
                         {
