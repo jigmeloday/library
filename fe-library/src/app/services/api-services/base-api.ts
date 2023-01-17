@@ -3,7 +3,7 @@ import { APIResponse, Methods } from '../../shared/models/shared.model';
 // const baseUrl = environment.NX_SERVER_URL ;
 
 export const FetchAPI = async <T>( url: string, method: Methods, init?: RequestInit ): Promise<APIResponse<T>> => {
-    return window.fetch( `${''}/${url}`, {
+    return window.fetch( `${'http://localhost'}/${url}`, {
         method,
         ...init,
         credentials: 'include',
