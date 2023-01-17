@@ -1,12 +1,14 @@
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 import { Routes, Route} from "react-router-dom";
 import { RouteModel } from '../../shared/models/shared.model';
+
+const Login = lazy(() => import('../../pages/auth/login'));
 
 export function AuthRoute() {
     const CORE_ROUTE: RouteModel[] = [
         {
             id: '1',
-            component: <>Login</>,
+            component: <Login/>,
             route: '/login'
         },
         {

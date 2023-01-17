@@ -1,7 +1,7 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
 import { setTheme } from './shared.action';
 
-export const SHARED_STATE_KEY = 'common';
+export const SHARED_STATE_KEY = 'shared_key';
 
 export interface SharedStateInterface {
     currentTheme: string

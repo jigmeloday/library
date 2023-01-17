@@ -13,7 +13,7 @@ export function UserRoute() {
     ];
 
     return(
-        <Suspense fallback='loading...'>
+        <Suspense fallback={ 'loading...' }>
             <Routes>
                 {
                     (isAuthenticated ? AUTHENTICATED: []).map(({ id, route, component }) =>
