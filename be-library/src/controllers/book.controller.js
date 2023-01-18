@@ -2,11 +2,15 @@ const Book = require('../models/book');
 const mongoose = require('mongoose');
 
 
-exports.get_books = (req, res) => {
-    Book.find().exec().then((resp) => res.status(200).json({books: resp}).catch((err) => {
-            res.status(500).json({message: err})
-        })
-    )
+exports.get_books = (req, res, next) => {
+
+    Book.find().exec()
+        .then((resp) =>
+            res.status(200).json({ books: resp })
+        )
+        .catch((error) =>
+            res.status(500).json({ message: error })
+        )
 }
 
 exports.get_book_by_id = (req, res) => {

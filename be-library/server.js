@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 // const indexRouter = require('./src/routes/index')
 //
 mongoose.set("strictQuery", false);
-mongoose.connect(process.env.DATABASE_URL)
+mongoose.connect(process.env.BASE_URL)
 
 const db = mongoose.connection;
 
