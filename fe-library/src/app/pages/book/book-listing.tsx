@@ -7,9 +7,10 @@ import { BookCard } from './components/book-card.component';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import { Button } from '../../shared/components/button/button.component';
+import { GetBooks } from '../../services/model/book.model';
 
 export function BookListing() {
-    const [book, setBook] = useState<any>([])
+    const [book, setBook] = useState<GetBooks>()
     useEffect(() => {
         BookFacade.getBooks().then((res) => {
             setBook(res?.data)
@@ -19,8 +20,8 @@ export function BookListing() {
         <Grid container item >
             <Grid item container direction='row' py='22px' px='14px' justifyContent='center'>
                 {
-                    book?.books?.map(() =>
-                        <Grid item py='20px' px='8px' width='24%'>
+                    book?.books?.map(({ _id, title, category, coverImage, price, quantity, summary  }) =>
+                        <Grid item py='20px' px='8px' width='24%' key={_id}>
                             <Card>
                                 <CardHeader
                                     avatar={
@@ -33,7 +34,7 @@ export function BookListing() {
                                             {/*<MoreVertIcon />*/}
                                         </IconButton>
                                     }
-                                    title="Shrimp and Chorizo Paella"
+                                    title={title}
                                     subheader="September 14, 2016"
                                 />
                                 <CardMedia
@@ -43,9 +44,7 @@ export function BookListing() {
                                     alt="Paella dish"
                                 />
                                 <CardContent>
-                                   <Typography label=' This impressive paella is a perfect party dish and a fun meal to cook
-                                        together with your guests. Add 1 cup of frozen peas along with the mussels,
-                                        if you like...' />
+                                   <Typography label={summary} />
                                 </CardContent>
                                 <Grid item container direction='row' px='6px' pb='6px'>
                                     <IconButton aria-label="add to favorites">
