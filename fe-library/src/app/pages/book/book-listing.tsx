@@ -8,6 +8,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import { Button } from '../../shared/components/button/button.component';
 import { GetBooks } from '../../services/model/book.model';
+import { BookCover } from '../../shared/utils/shared.utils';
 
 export function BookListing() {
     const [book, setBook] = useState<GetBooks>()
@@ -40,7 +41,7 @@ export function BookListing() {
                                 <CardMedia
                                     component="img"
                                     height="194"
-                                    image="https://images.unsplash.com/photo-1673968873206-ceb16421a803?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
+                                    image={coverImage? `http://localhost:3000/${coverImage}` : BookCover}
                                     alt="Paella dish"
                                 />
                                 <CardContent>
