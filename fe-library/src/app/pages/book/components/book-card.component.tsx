@@ -7,9 +7,10 @@ import { Book } from '../../../services/model/book.model';
 import { BookCover } from '../../../shared/utils/shared.utils';
 import { Button } from '../../../shared/components/button/button.component';
 import { ProfileContainer } from '../../../components/profile-image/profile-image.style';
+import { useNavigate } from 'react-router-dom';
 
 export function BookCard(props:{ items: Book }) {
-
+    const nav = useNavigate()
     return(
         <Card>
             <Grid item container justifyContent='center'>
@@ -34,7 +35,7 @@ export function BookCard(props:{ items: Book }) {
                 </Grid>
             </CardContent>
             <Grid item container justifyContent='center' pb='20px'>
-                <Button variant='outlined' label='View More' />
+                <Button click={() => nav(`/books/${props.items._id}`)} variant='outlined' label='View More' />
             </Grid>
         </Card>
     )
