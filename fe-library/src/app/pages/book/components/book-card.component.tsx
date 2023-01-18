@@ -23,20 +23,10 @@ export function BookCard(props:{ items: Book }) {
                     <Typography label={props?.items?.author} variant='caption' />
                     <Typography label={props?.items?.category} variant='caption'  />
                 </Grid>
-                {/*<Typography label={props?.items?.summary} />*/}
             </CardContent>
             <Grid item container justifyContent='center' pb='20px'>
-                <Button variant='outlined' label='read' />
+                <Button variant='outlined' label='View More' />
             </Grid>
-            {/*migth need in future*/}
-            {/*<Grid item container direction='row' px='6px' pb='6px'>*/}
-            {/*    <IconButton aria-label="add to favorites">*/}
-            {/*        <FavoriteIcon />*/}
-            {/*    </IconButton>*/}
-            {/*    <IconButton aria-label="share">*/}
-            {/*        <ShareIcon />*/}
-            {/*    </IconButton>*/}
-            {/*</Grid>*/}
         </Card>
     )
 }

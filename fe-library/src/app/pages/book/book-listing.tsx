@@ -17,7 +17,7 @@ export function BookListing() {
     }, [])
     return(
         <Grid container item >
-            <Grid item container direction='row' py='22px' px='14px' justifyContent='center'>
+            <Grid item container direction='row' py='22px' px='14px' justifyContent='start'>
                 {
                     book?.books?.map((item: Book ) =>
                         <Grid item py='20px' px='8px' width='24%' key={item._id}>
