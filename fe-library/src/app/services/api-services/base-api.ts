@@ -3,10 +3,10 @@ import { APIResponse, Methods } from '../../shared/models/shared.model';
 // const baseUrl = environment.NX_SERVER_URL ;
 
 export const FetchAPI = async <T>( url: string, method: Methods, init?: RequestInit ): Promise<APIResponse<T>> => {
-    return window.fetch( `${'http://localhost'}/${url}`, {
+    return window.fetch( `${'http://localhost:3000'}/books/63be801fd2e9939ba82ebf0b`, {
         method,
         ...init,
-        credentials: 'include',
+        // credentials: 'include',
         headers: {
             'accept-language': 'en',
         }
