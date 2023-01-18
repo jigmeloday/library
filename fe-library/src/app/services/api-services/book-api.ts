@@ -1,3 +1,3 @@
 import { FetchAPI } from './base-api';
 
-export const getBooksAPI = () => FetchAPI('/books', 'GET');
+export const getBooksAPI = () => FetchAPI('books', 'GET');
