@@ -8,6 +8,7 @@ import { Button } from '../../shared/components/button/button.component';
 import { Book, GetBooks } from '../../services/model/book.model';
 import { BookCover } from '../../shared/utils/shared.utils';
 import { SharedModule } from '../../shared/components/module/shared.module';
+import { AddBook } from './module/add-book.module';
 
 export function BookListing() {
     const [book, setBook] = useState<GetBooks>();
@@ -38,7 +39,7 @@ export function BookListing() {
             </Grid>
             {
                 addBook && <SharedModule title='Add Book' isOpen={addBook} handleClick={handleClick}  >
-                    hello
+                    <AddBook />
                 </SharedModule>
             }
         </Grid>
