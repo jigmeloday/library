@@ -16,14 +16,14 @@ export function AddBook() {
         <Grid container item >
           <Grid item container direction='row' py='12px'>
               <Grid item xs={6} px='4px'>
-                  <Input label='Title of Book'  />
+                  <Input label='Book Title'  />
               </Grid>
               <Grid item xs={6} px='4px'>
-                  <Input label='Name of Author' />
+                  <Input label='Author' />
               </Grid>
           </Grid>
             <Grid item container direction='column'>
-                <Input label='category'  />
+                <Input label='Genre'  />
             </Grid>
             <Grid item container direction='row' py='12px' >
                 <Grid item xs={6} px='4px' >

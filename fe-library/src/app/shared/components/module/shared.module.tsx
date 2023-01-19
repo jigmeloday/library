@@ -31,12 +31,6 @@ export function SharedModule(props: SharedModuleProps) {
                 <DialogContent>
                     {props.children}
                 </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClick}>Disagree</Button>
-                    <Button onClick={handleClick} autoFocus>
-                        Agree
-                    </Button>
-                </DialogActions>
             </Dialog>
         </div>
     );
