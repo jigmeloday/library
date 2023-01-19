@@ -1,6 +1,8 @@
-import { Suspense } from "react";
-import { Routes, Route} from "react-router-dom";
+import { lazy, Suspense } from 'react';
+import { Routes, Route} from 'react-router-dom';
 import { RouteModel } from '../../shared/models/shared.model';
+
+const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
 
 export function UserRoute() {
     const isAuthenticated = true;
@@ -20,7 +22,7 @@ export function UserRoute() {
                         <Route key={`${route}+${id}`} path={route} element={component} />
                     )
                 }
-                <Route path={'*'} element={<>404</>} />
+                <Route path={'*'} element={<PageNotFound/>} />
             </Routes>
         </Suspense>
     )

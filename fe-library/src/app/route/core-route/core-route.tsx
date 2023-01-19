@@ -12,6 +12,7 @@ const UserRoute = lazy( () => import('../user-route/user-route') );
 const Header = lazy( () => import('../../components/header/header') );
 const Landing = lazy( () => import('../../pages/home/home') );
 const Footer = lazy(() => import('../../components/footer/footer.component'));
+const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
 
 export function CoreRoute() {
     const url = useLocation().pathname;
@@ -69,7 +70,7 @@ export function CoreRoute() {
                                     <Route key={ `${ route }+${ id }` } path={ route } element={ component }/>
                                 )
                             }
-                            <Route path={ '*' } element={ <>404</> }/>
+                            <Route path={ '*' } element={ <PageNotFound/> }/>
                         </Routes>
                     </Suspense>
                 </Grid>

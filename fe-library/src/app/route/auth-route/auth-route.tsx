@@ -3,6 +3,7 @@ import { Routes, Route} from "react-router-dom";
 import { RouteModel } from '../../shared/models/shared.model';
 
 const Login = lazy(() => import('../../pages/auth/login'));
+const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
 
 export function AuthRoute() {
     const CORE_ROUTE: RouteModel[] = [
@@ -31,7 +32,7 @@ export function AuthRoute() {
                         <Route key={`${route}+${id}`} path={route} element={component} />
                     )
                 }
-                <Route path={'*'} element={<>404</>} />
+                <Route path={'*'} element={<PageNotFound/>} />
             </Routes>
         </Suspense>
     )

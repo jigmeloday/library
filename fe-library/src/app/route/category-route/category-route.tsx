@@ -4,6 +4,7 @@ import { RouteModel } from '../../shared/models/shared.model';
 
 const Category = lazy(() => import('../../pages/category/category'));
 const CategoryDetails = lazy(() => import('../../pages/category/category-details'));
+const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
 
 export function CategoryRoute() {
     const CORE_ROUTE: RouteModel[] = [
@@ -26,7 +27,7 @@ export function CategoryRoute() {
                         <Route key={`${route}+${id}`} path={route} element={component} />
                     )
                 }
-                <Route path={'*'} element={<>404</>} />
+                <Route path={'*'} element={<PageNotFound/>} />
             </Routes>
         </Suspense>
     )
