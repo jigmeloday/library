@@ -55,15 +55,16 @@ export function CoreRoute() {
     ];
 
     return (
-        <Grid container className='app-container'>
-            <Grid item container direction='column'>
-                <Grid item container>
-                    {
-                        url.includes( 'authentication' ) ? null : <Header/>
-                    }
-                </Grid>
-                <Grid item container>
-                    <Suspense fallback={'loading'}>
+        <Suspense fallback={<>loading</>}>
+            <Grid container className='app-container'>
+                <Grid item container direction='column'>
+                    <Grid item container>
+                        {
+                            url.includes( 'authentication' ) ? null : <Header/>
+                        }
+                    </Grid>
+                    <Grid item container>
+
                         <Routes>
                             {
                                 CORE_ROUTE.map( ( { id, route, component } ) =>
@@ -72,15 +73,15 @@ export function CoreRoute() {
                             }
                             <Route path={ '*' } element={ <PageNotFound/> }/>
                         </Routes>
-                    </Suspense>
+                    </Grid>
+                </Grid>
+                <Grid item alignSelf='end' xs={ 12 }>
+                    {
+                        url === '/' && <Footer />
+                    }
                 </Grid>
             </Grid>
-            <Grid item alignSelf='end' xs={ 12 }>
-                {
-                    url === '/' && <Footer />
-                }
-            </Grid>
-        </Grid>
+        </Suspense>
     )
 }
 
