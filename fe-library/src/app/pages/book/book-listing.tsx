@@ -17,10 +17,14 @@ export function BookListing() {
     }, [])
     return(
         <Grid container item >
-            <Grid item container direction='row' py='22px' px='14px' justifyContent='start'>
+            <Grid item container justifyContent='end' px='82px' py='24px'>
+                <Button label='Add book' variant='outlined'/>
+
+            </Grid>
+            <Grid item container direction='row' py='2px' px='14px' justifyContent='start'>
                 {
                     book?.books?.map((item: Book ) =>
-                        <Grid item py='20px' px='8px' width='24%' key={item._id}>
+                        <Grid item py='10px' px='8px' width='24%' key={item._id}>
                             <BookCard items={item} />
                         </Grid>
                     )
