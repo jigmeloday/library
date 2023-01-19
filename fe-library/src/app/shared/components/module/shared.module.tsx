@@ -7,6 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import { SharedModuleProps } from '../../models/shared.model';
+import { Typography } from '../typography/typography.component';
 
 export function SharedModule(props: SharedModuleProps) {
     const [open, setOpen] = useState(props?.isOpen);
@@ -25,13 +26,10 @@ export function SharedModule(props: SharedModuleProps) {
                 aria-describedby="alert-dialog-description"
             >
                 <DialogTitle id="alert-dialog-title">
-                    {"Use Google's location service?"}
+                    <Typography label={props.title} variant='body1'  fontSize={24} />
                 </DialogTitle>
                 <DialogContent>
-                    <DialogContentText id="alert-dialog-description">
-                        Let Google help apps determine location. This means sending anonymous
-                        location data to Google, even when no apps are running.
-                    </DialogContentText>
+                    {props.children}
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleClick}>Disagree</Button>
