@@ -34,3 +34,8 @@ export interface APIResponse<T> {
     data?: T;
     error?: { errors: string[] };
 }
+
+export interface SharedModuleProps{
+    isOpen: boolean;
+    handleClick: () => void
+}
