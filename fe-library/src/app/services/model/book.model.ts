@@ -3,12 +3,12 @@ export interface GetBooks {
 }
 
 export interface Book{
-    _id: string,
+    _id?: string,
     title: string,
-    isbn: number,
+    isbn: string,
     author: string,
-    price: number,
-    quantity: number,
+    price: string,
+    quantity: string,
     category: string,
     coverImage: string,
     summary: string,
