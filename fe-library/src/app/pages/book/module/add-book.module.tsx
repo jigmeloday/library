@@ -1,8 +1,10 @@
 import { Box, Grid } from '@mui/material';
 import { Formik } from 'formik';
 import { memo, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { theme } from '../../../../assest/theme';
 import { BookFacade } from '../../../services/facade-service/book-facade';
+import { getBook } from '../../../services/states/book-state/book.slice';
 import { Button } from '../../../shared/components/button/button.component';
 import { Input } from '../../../shared/components/input/input.component';
 import { SharedModule } from '../../../shared/components/module/shared.module';
@@ -13,6 +15,7 @@ import './book.css'
 
 export function AddBook(props: { handleClick: () => void }) {
     const [file, setFile] = useState('');
+    const dispatch = useDispatch();
 
     return(
         <SharedModule title='Add Book' isOpen={true}>
@@ -33,7 +36,8 @@ export function AddBook(props: { handleClick: () => void }) {
                            coverImage: file
                        }
                        BookFacade.addBook(data).then((resp) => {
-                           props.handleClick()
+                           props.handleClick();
+                           dispatch(getBook() as keyof unknown)
                        }).catch((error) => console.log(error))
                    } }
                >
