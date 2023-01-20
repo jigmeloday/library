@@ -26,7 +26,13 @@ export function AddBook(props: { handleClick: () => void }) {
                        isbn: '',
                        summary: '',
                    }}
-                   onSubmit={(values) => console.log(values) }
+                   onSubmit={(values) => {
+                       const data = {
+                           ...values,
+                           coverImage: file
+                       }
+                       console.log(data)
+                   } }
                >
                    {({ handleChange, handleSubmit, values }) =>
                        <AddBookForm
