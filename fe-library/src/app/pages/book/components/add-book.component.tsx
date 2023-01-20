@@ -9,6 +9,7 @@ import { AddBookFormProps } from '../model/book.model';
 export function AddBookForm (props: AddBookFormProps) {
     const [image, setImage] = useState<any>('')
     const handleUpload = (event: any) => {
+        props.setFile(event.target.files[0])
         setImage(URL.createObjectURL(event.target.files[0]))
     }
     const handleClick = () => {
@@ -25,23 +26,43 @@ export function AddBookForm (props: AddBookFormProps) {
                         label='Book Title'  />
                 </Grid>
                 <Grid item xs={6} px='4px'>
-                    <Input label='Author' />
+                    <Input
+                        name='author'
+                        onChange={props.handleChange}
+                        value={props.values.title}
+                        label='Author' />
                 </Grid>
             </Grid>
             <Grid item container direction='column'>
-                <Input label='Genre'  />
+                <Input
+                    name='category'
+                    onChange={props.handleChange}
+                    value={props.values.title}
+                    label='Genre'  />
             </Grid>
             <Grid item container direction='row' py='12px' >
                 <Grid item xs={6} px='4px' >
-                    <Input label='Price'  />
+                    <Input
+                        name='price'
+                        onChange={props.handleChange}
+                        value={props.values.title}
+                        label='Price'  />
                 </Grid>
                 <Grid item xs={6} px='4px' >
-                    <Input label='Quantity' />
+                    <Input
+                        name='quantity'
+                        onChange={props.handleChange}
+                        value={props.values.title}
+                        label='Quantity' />
                 </Grid>
             </Grid>
             <Grid item container direction='column'>
                 <Grid item xs={6} py='12px' >
-                    <Input label='ISBN Number' />
+                    <Input
+                        name='isbn'
+                        onChange={props.handleChange}
+                        value={props.values.title}
+                        label='ISBN Number' />
                 </Grid>
             </Grid>
             <Grid item container justifyContent='center' py='12px'>
@@ -62,6 +83,9 @@ export function AddBookForm (props: AddBookFormProps) {
             </Grid>
             <Grid item container direction='column'>
                 <TextArea
+                    name='author'
+                    onChange={props.handleChange}
+                    value={props.values.title}
                     minRows={ 8 }
                 />
             </Grid>

@@ -3,4 +3,5 @@ export interface AddBookFormProps {
     handleChange: any;
     values: any;
     submit: any
+    setFile: any
 }

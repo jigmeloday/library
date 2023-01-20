@@ -11,7 +11,8 @@ import { AddBookForm } from '../components/add-book.component';
 import './book.css'
 
 export function AddBook(props: { handleClick: () => void }) {
-    
+    const [file, setFile] = useState('');
+
     return(
         <SharedModule title='Add Book' isOpen={true}>
             <Grid container item >
@@ -21,6 +22,7 @@ export function AddBook(props: { handleClick: () => void }) {
                >
                    {({ handleChange, handleSubmit, values }) =>
                        <AddBookForm
+                           setFile={setFile}
                            handleChange={handleChange} 
                            values={values}
                            submit={handleSubmit}
