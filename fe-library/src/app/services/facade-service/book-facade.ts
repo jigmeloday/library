@@ -11,6 +11,6 @@ export class BookFacade {
         return  getBookAPI(id);
     }
     static addBook(book: Book): Promise<APIResponse<Book>> {
-        return createBookAPI(serialize)
+        return createBookAPI(serialize(book))
     }
 }

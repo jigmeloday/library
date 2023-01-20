@@ -2,6 +2,7 @@ import { Box, Grid } from '@mui/material';
 import { Formik } from 'formik';
 import { memo, useState } from 'react';
 import { theme } from '../../../../assest/theme';
+import { BookFacade } from '../../../services/facade-service/book-facade';
 import { Button } from '../../../shared/components/button/button.component';
 import { Input } from '../../../shared/components/input/input.component';
 import { SharedModule } from '../../../shared/components/module/shared.module';
@@ -31,7 +32,9 @@ export function AddBook(props: { handleClick: () => void }) {
                            ...values,
                            coverImage: file
                        }
-                       console.log(data)
+                       BookFacade.addBook(data).then((resp) => {
+                           props.handleClick()
+                       }).catch((error) => console.log(error))
                    } }
                >
                    {({ handleChange, handleSubmit, values }) =>
