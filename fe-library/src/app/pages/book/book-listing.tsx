@@ -38,9 +38,7 @@ export function BookListing() {
                 }
             </Grid>
             {
-                addBook && <SharedModule title='Add Book' isOpen={addBook} handleClick={handleClick}  >
-                    <AddBook />
-                </SharedModule>
+                addBook && <AddBook handleClick={handleClick} />
             }
         </Grid>
     )

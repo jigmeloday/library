@@ -36,8 +36,8 @@ export interface APIResponse<T> {
 }
 
 export interface SharedModuleProps{
-    isOpen: boolean;
-    handleClick: () => void
-    title: string
+    isOpen?: boolean;
+    handleClick?: () => void
+    title?: string
     children?: any
 }
