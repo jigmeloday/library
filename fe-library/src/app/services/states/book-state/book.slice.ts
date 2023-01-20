@@ -1,7 +1,7 @@
 import { createSelector, createSlice } from '@reduxjs/toolkit';
 import { GetBooks } from '../../model/book.model';
 
-export const BOOK_STATE_KEY = 'credential_key';
+export const BOOK_STATE_KEY = 'book_key';
 
 export interface BookStateInterface {
     books: GetBooks | null
