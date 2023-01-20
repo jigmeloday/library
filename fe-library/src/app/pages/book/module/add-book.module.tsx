@@ -17,7 +17,15 @@ export function AddBook(props: { handleClick: () => void }) {
         <SharedModule title='Add Book' isOpen={true}>
             <Grid container item >
                <Formik
-                   initialValues={{ title: '' }}
+                   initialValues={{ 
+                       title: '',
+                       author: '',
+                       category: '',
+                       price: '',
+                       quantity: '',
+                       isbn: '',
+                       summary: '',
+                   }}
                    onSubmit={(values) => console.log(values) }
                >
                    {({ handleChange, handleSubmit, values }) =>

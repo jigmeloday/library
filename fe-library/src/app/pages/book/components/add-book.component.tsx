@@ -29,7 +29,7 @@ export function AddBookForm (props: AddBookFormProps) {
                     <Input
                         name='author'
                         onChange={props.handleChange}
-                        value={props.values.title}
+                        value={props.values.author}
                         label='Author' />
                 </Grid>
             </Grid>
@@ -37,7 +37,7 @@ export function AddBookForm (props: AddBookFormProps) {
                 <Input
                     name='category'
                     onChange={props.handleChange}
-                    value={props.values.title}
+                    value={props.values.category}
                     label='Genre'  />
             </Grid>
             <Grid item container direction='row' py='12px' >
@@ -45,14 +45,14 @@ export function AddBookForm (props: AddBookFormProps) {
                     <Input
                         name='price'
                         onChange={props.handleChange}
-                        value={props.values.title}
+                        value={props.values.price}
                         label='Price'  />
                 </Grid>
                 <Grid item xs={6} px='4px' >
                     <Input
                         name='quantity'
                         onChange={props.handleChange}
-                        value={props.values.title}
+                        value={props.values.quantity}
                         label='Quantity' />
                 </Grid>
             </Grid>
@@ -61,7 +61,7 @@ export function AddBookForm (props: AddBookFormProps) {
                     <Input
                         name='isbn'
                         onChange={props.handleChange}
-                        value={props.values.title}
+                        value={props.values.isbn}
                         label='ISBN Number' />
                 </Grid>
             </Grid>
@@ -83,9 +83,9 @@ export function AddBookForm (props: AddBookFormProps) {
             </Grid>
             <Grid item container direction='column'>
                 <TextArea
-                    name='author'
+                    name='summary'
                     onChange={props.handleChange}
-                    value={props.values.title}
+                    value={props.values.summary}
                     minRows={ 8 }
                 />
             </Grid>
