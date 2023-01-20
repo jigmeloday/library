@@ -4,6 +4,7 @@ import { RouteModel } from '../../shared/models/shared.model';
 
 const Book = lazy(() => import('../../pages/book/book-listing'))
 const BookDetails = lazy(() => import('../../pages/book/book-detail'))
+const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
 
 export function BookRoute() {
     const CORE_ROUTE: RouteModel[] = [
@@ -27,7 +28,7 @@ export function BookRoute() {
                         <Route key={`${route}+${id}`} path={route} element={component} />
                     )
                 }
-                <Route path={'*'} element={<>404</>} />
+                <Route path={'*'} element={<PageNotFound/>} />
             </Routes>
         </Suspense>
     )

@@ -41,21 +41,21 @@ In a Monorepo, it becomes necessary to have some pattern to name your branches, 
 
 **For FE**
 
-_`fe/<feature_name>`_
+_`library/<feature_name>`_
 
-> e.g. fe/feature-name
+> e.g. library/feature-name
 > 
 **For BE**
 
-_`be/<feature_name>`_
+_`library/<feature_name>`_
 
-> e.g. be/feature-name
+> e.g. library/feature-name
 > 
 **For UI**
 
-_`ui/<feature_name>`_
+_`library/<feature_name>`_
 
-> e.g. ui/feature-name
+> e.g. library/feature-name
 
 
 ### Folder Structure for components

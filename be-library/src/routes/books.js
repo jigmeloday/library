@@ -19,9 +19,9 @@ router.get('/',  bookController.get_books);
 
 router.get('/:id', bookController.get_book_by_id);
 
-router.post('/', routeGuard, upload.single('coverImage') , bookController.post_book);
+router.post('/', upload.single('coverImage') , bookController.post_book);
 
-router.delete('/:id',routeGuard, bookController.delete_book)
+router.delete('/:id', bookController.delete_book)
 
 router.patch('/:id',routeGuard, bookController.update_book)
 

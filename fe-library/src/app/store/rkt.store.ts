@@ -8,10 +8,12 @@ import {
     credentialReducer,
     CredentialStateInterface
 } from '../services/states/credential-state/credential.slice';
+import { bookReducer, BookStateInterface, BOOK_STATE_KEY } from '../services/states/book-state/book.slice';
 
 export interface IReducer {
     [ SHARED_STATE_KEY ]: SharedStateInterface;
     [ CREDENTIAL_STATE_KEY ]: CredentialStateInterface;
+    [ BOOK_STATE_KEY ] : BookStateInterface;
 }
 
 const persistConfig = {
@@ -22,6 +24,7 @@ const persistConfig = {
 
 const REDUCER: Reducer<CombinedState<IReducer>> = combineReducers({
     [ SHARED_STATE_KEY ] : sharedReducer,
+    [ BOOK_STATE_KEY ] : bookReducer,
     [ CREDENTIAL_STATE_KEY ] : credentialReducer
 });
 

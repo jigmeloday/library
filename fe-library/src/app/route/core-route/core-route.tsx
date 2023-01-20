@@ -12,6 +12,7 @@ const UserRoute = lazy( () => import('../user-route/user-route') );
 const Header = lazy( () => import('../../components/header/header') );
 const Landing = lazy( () => import('../../pages/home/home') );
 const Footer = lazy(() => import('../../components/footer/footer.component'));
+const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
 
 export function CoreRoute() {
     const url = useLocation().pathname;
@@ -54,32 +55,33 @@ export function CoreRoute() {
     ];
 
     return (
-        <Grid container className='app-container'>
-            <Grid item container direction='column'>
-                <Grid item container>
-                    {
-                        url.includes( 'authentication' ) ? null : <Header/>
-                    }
-                </Grid>
-                <Grid item container>
-                    <Suspense fallback={'loading'}>
+        <Suspense fallback={<>loading</>}>
+            <Grid container className='app-container'>
+                <Grid item container direction='column'>
+                    <Grid item container>
+                        {
+                            url.includes( 'authentication' ) ? null : <Header/>
+                        }
+                    </Grid>
+                    <Grid item container>
+
                         <Routes>
                             {
                                 CORE_ROUTE.map( ( { id, route, component } ) =>
                                     <Route key={ `${ route }+${ id }` } path={ route } element={ component }/>
                                 )
                             }
-                            <Route path={ '*' } element={ <>404</> }/>
+                            <Route path={ '*' } element={ <PageNotFound/> }/>
                         </Routes>
-                    </Suspense>
+                    </Grid>
+                </Grid>
+                <Grid item alignSelf='end' xs={ 12 }>
+                    {
+                        url === '/' && <Footer />
+                    }
                 </Grid>
             </Grid>
-            <Grid item alignSelf='end' xs={ 12 }>
-                {
-                    url === '/' && <Footer />
-                }
-            </Grid>
-        </Grid>
+        </Suspense>
     )
 }
 
