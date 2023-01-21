@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { RouteModel } from '../../shared/models/shared.model';
 import { Grid } from '@mui/material';
 import './core-route.style.css';
@@ -71,6 +71,10 @@ export function CoreRoute() {
                                     <Route key={ `${ route }+${ id }` } path={ route } element={ component }/>
                                 )
                             }
+                            <Route
+                                path='/authentication'
+                                element={<Navigate to="/" replace />}
+                            />
                             <Route path={ '*' } element={ <PageNotFound/> }/>
                         </Routes>
                     </Grid>
