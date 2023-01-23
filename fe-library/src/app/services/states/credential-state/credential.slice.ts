@@ -16,8 +16,7 @@ export const userLogin = createAsyncThunk(
     async ( payload:{ email: string, password: string }, thunkAPI ) => {
         const { data, error } = await AuthFacade.login(payload);
         if ( data ) {
-            debugger
-            return data;
+            return data?.token;
         }
         if ( error ) {
             return thunkAPI.rejectWithValue( error.errors );
@@ -31,9 +30,9 @@ export const CREDENTIAL_STATE = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder
-            .addCase('setTheme', (state, action) => {
-                state.currentToken = '';
-            });
+            .addCase(userLogin.fulfilled, (state, action) => {
+                state.currentToken = action.payload
+            })
     }
 });
 
