@@ -1,4 +1,5 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
+import { AuthFacade } from '../../facade-service/auth-facade';
 
 export const CREDENTIAL_STATE_KEY = 'credential_key';
 
@@ -9,6 +10,20 @@ export interface CredentialStateInterface {
 export const INITIAL_CREDENTIAL_VALUE: CredentialStateInterface = {
     currentToken: ''
 };
+
+export const userLogin = createAsyncThunk(
+    'credential/userLogin',
+    async ( payload:{ email: string, password: string }, thunkAPI ) => {
+        const { data, error } = await AuthFacade.login(payload);
+        if ( data ) {
+            debugger
+            return data;
+        }
+        if ( error ) {
+            return thunkAPI.rejectWithValue( error.errors );
+        }
+    }
+)
 
 export const CREDENTIAL_STATE = createSlice({
     name: CREDENTIAL_STATE_KEY,
