@@ -1,11 +1,16 @@
 import { Grid } from "@mui/material";
 import { Formik } from "formik";
+import { useDispatch } from "react-redux";
+import { userLogin } from "../../services/states/credential-state/credential.slice";
 import { Button } from "../../shared/components/button/button.component";
 import { Input } from "../../shared/components/input/input.component";
 import { Typography } from "../../shared/components/typography/typography.component";
 import { AuthComponent } from "./components/auth.component";
 
 export function Login() {
+
+    const dispatch = useDispatch()
+
     return (
         <AuthComponent>
             <Grid item container direction='column'>
@@ -13,7 +18,9 @@ export function Login() {
                 <Grid item container py='20px' direction='column' justifyContent='center' alignItems='cneter'>
                     <Formik
                         initialValues={{ email: '', password: '' }}
-                        onSubmit={(values) => console.log(values)}
+                        onSubmit={(values) => {
+                            dispatch(userLogin(values) as keyof unknown)
+                        }}
                     >
                         {({ handleSubmit, handleChange, values })=>
                             <>
