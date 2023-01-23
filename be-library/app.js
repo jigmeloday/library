@@ -15,9 +15,9 @@ app.use('/files',express.static('files'));
 
 //bodyParser
 
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.json());
 app.use(bodyParser.json());
 //CORS
 app.use((req,res, next) =>{
