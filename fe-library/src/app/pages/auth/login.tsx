@@ -6,6 +6,7 @@ import { Button } from '../../shared/components/button/button.component';
 import { Input } from '../../shared/components/input/input.component';
 import { Typography } from '../../shared/components/typography/typography.component';
 import { AuthComponent } from './components/auth.component';
+import { LOGIN_SCHEMA } from './misc/validation/auth.misc';
 
 export function Login() {
 
@@ -22,17 +23,19 @@ export function Login() {
                     <Grid item container py='22px'>
                         <Formik
                             initialValues={ { email: '', password: '' } }
+                            validationSchema={LOGIN_SCHEMA}
                             onSubmit={ ( values ) => {
                                 dispatch( userLogin( values ) as keyof unknown )
                             } }
                         >
-                            { ( { handleSubmit, handleChange, values } ) =>
+                            { ( { handleSubmit, handleChange, values, errors } ) =>
                                 <Grid item container direction='column'>
                                     <Box py='12px'>
                                         <Input
                                             name='email'
                                             onChange={ handleChange }
                                             value={ values.email }
+                                            helperText={errors.email && errors.email}
                                             label='Email'/>
 
                                     </Box>
@@ -41,6 +44,7 @@ export function Login() {
                                             name='password'
                                             onChange={ handleChange }
                                             value={ values.password }
+                                            helperText={errors.password && errors.password}
                                             type='password'
                                             label='Password'
                                         />
