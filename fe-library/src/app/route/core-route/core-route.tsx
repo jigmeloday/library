@@ -1,8 +1,10 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import { RouteModel } from '../../shared/models/shared.model';
 import { Grid } from '@mui/material';
 import './core-route.style.css';
+import { useSelector } from 'react-redux';
+import { selectToken } from '../../services/states/credential-state/credential.slice';
 
 const AuthRoute = lazy( () => import('../auth-route/auth-route') );
 const BookRoute = lazy( () => import('../book-route/book-route') );
@@ -16,6 +18,7 @@ const PageNotFound = lazy(() => import('../../components/page-not-found/page-not
 
 export function CoreRoute() {
     const url = useLocation().pathname;
+    const isAuthenticated = useSelector(selectToken)
     const CORE_ROUTE: RouteModel[] = [
         {
             id: '1',
@@ -53,6 +56,38 @@ export function CoreRoute() {
             route: '/user/:id'
         }
     ];
+    const AUTHENTICATED: RouteModel[] = [
+        {
+            id: '1',
+            component: <Landing/>,
+            route: '/'
+        },
+        {
+            id: '2',
+            component: <BookRoute/>,
+            route: '/books/*'
+        },
+        {
+            id: '3',
+            component: <CategoryRoute/>,
+            route: '/categories/*'
+        },
+        {
+            id: '4',
+            component: <Author/>,
+            route: '/authors/*'
+        },
+        {
+            id: '6',
+            component: <UserRoute/>,
+            route: '/profile/*'
+        },
+        {
+            id: '7',
+            component: <>User</>,
+            route: '/user/:id'
+        }
+    ]
 
     return (
         <Suspense fallback={<>loading</>}>
@@ -67,10 +102,14 @@ export function CoreRoute() {
 
                         <Routes>
                             {
-                                CORE_ROUTE.map( ( { id, route, component } ) =>
+                                (isAuthenticated? AUTHENTICATED : CORE_ROUTE ).map( ( { id, route, component } ) =>
                                     <Route key={ `${ route }+${ id }` } path={ route } element={ component }/>
                                 )
                             }
+                            <Route
+                                path='*'
+                                element={<Navigate to="/" replace />}
+                            />
                             <Route path={ '*' } element={ <PageNotFound/> }/>
                         </Routes>
                     </Grid>

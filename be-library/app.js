@@ -1,7 +1,7 @@
 const express = require('express');
 const log = require('morgan');
 const bodyParser = require('body-parser');
-
+const cors = require('cors')
 const app = express();
 
 const book = require('./src/routes/books');
@@ -15,17 +15,29 @@ app.use('/files',express.static('files'));
 
 //bodyParser
 
-app.use(bodyParser.urlencoded({
-    extended: false
-}));
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.json());
 app.use(bodyParser.json());
 //CORS
-app.use((req,res, next) =>{
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH");
-    next();
-});
+//not working need to check why?
+// app.use((req,res, next) =>{
+//     res.header("Access-Control-Allow-Credentials", 'include')
+//     // res.header("Access-Control-Allow-Credentials", "true");
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, PATCH");
+//     next();
+// })
+
+app.use(cors({
+    allowedHeaders: 'Content-Type, Authorization',
+    allowedMethods: 'GET, POST, PUT',
+    allowCredentials: true,
+    maxAge: 3600,
+    exposedHeaders: 'Content-Type'
+}));
+
 
 //route
 app.use('/authors', author);

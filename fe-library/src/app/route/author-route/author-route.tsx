@@ -1,10 +1,10 @@
 import { lazy, Suspense } from "react";
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { RouteModel } from '../../shared/models/shared.model';
 
-const Authors = lazy(() => import('../../pages/author/author-listing'));
-const AuthorDetails = lazy(() => import('../../pages/author/author-details'));
-const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
+const Authors = lazy( () => import('../../pages/author/author-listing') );
+const AuthorDetails = lazy( () => import('../../pages/author/author-details') );
+const PageNotFound = lazy( () => import('../../components/page-not-found/page-not-found') );
 
 export function AuthorRoute() {
     const CORE_ROUTE: RouteModel[] = [
@@ -20,17 +20,18 @@ export function AuthorRoute() {
         }
     ];
 
-    return(
+    return (
         <Suspense fallback='loading...'>
             <Routes>
                 {
-                    CORE_ROUTE.map(({ id, route, component }) =>
-                        <Route key={`${route}+${id}`} path={route} element={component} />
-)
-}
-    <Route path={'*'} element={<>404</>} />
-        </Routes>
+                    CORE_ROUTE.map( ( { id, route, component } ) =>
+                        <Route key={ `${ route }+${ id }` } path={ route } element={ component }/>
+                    )
+                }
+                <Route path={ '*' } element={ <PageNotFound/> }/>
+            </Routes>
         </Suspense>
-)
+    )
 }
-    export default AuthorRoute;
+
+export default AuthorRoute;
