@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage});
 
-router.get('/',  bookController.get_books);
+router.get('/', routeGuard,  bookController.get_books);
 
 router.get('/:id', bookController.get_book_by_id);
 

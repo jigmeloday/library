@@ -31,6 +31,7 @@ export const CREDENTIAL_STATE = createSlice({
     extraReducers: builder => {
         builder
             .addCase(userLogin.fulfilled, (state, action) => {
+                localStorage.setItem('token', action.payload)
                 state.currentToken = action.payload
             })
     }
