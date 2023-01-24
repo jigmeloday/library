@@ -8,7 +8,7 @@ export function AuthComponent(props: {children: any}) {
             <Grid item container direction='row' justifyContent='center' alignItems='center' p='22px'>
                <AuthCard item container direction='row'>
                    <Grid item  container xs={6}justifyContent='center' alignItems='center'>
-                       hello
+                       Authentication
                    </Grid>
                    <Grid item container xs={6} justifyContent='center' alignItems='center'>
                        {props.children}
