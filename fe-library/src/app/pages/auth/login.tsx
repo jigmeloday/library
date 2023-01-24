@@ -9,7 +9,7 @@ import { AuthComponent } from "./components/auth.component";
 
 export function Login() {
 
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     return (
         <AuthComponent>
