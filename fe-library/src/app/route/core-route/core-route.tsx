@@ -107,7 +107,7 @@ export function CoreRoute() {
                                 )
                             }
                             <Route
-                                path='/authentication'
+                                path='*'
                                 element={<Navigate to="/" replace />}
                             />
                             <Route path={ '*' } element={ <PageNotFound/> }/>
