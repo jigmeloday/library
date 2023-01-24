@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
 import { AuthFacade } from '../../facade-service/auth-facade';
+import { clearToken } from './credential.action';
 
 export const CREDENTIAL_STATE_KEY = 'credential_key';
 
@@ -33,6 +34,9 @@ export const CREDENTIAL_STATE = createSlice({
             .addCase(userLogin.fulfilled, (state, action) => {
                 localStorage.setItem('token', action.payload)
                 state.currentToken = action.payload
+            })
+            .addCase(clearToken, (state, action) => {
+                state.currentToken = ''
             })
     }
 });
