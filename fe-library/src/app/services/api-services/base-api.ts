@@ -4,11 +4,13 @@ import { APIResponse, Methods } from '../../shared/models/shared.model';
 // const baseUrl = environment.NX_SERVER_URL ;
 
 export const FetchAPI = async <T>( url: string, method: Methods, init?: RequestInit ): Promise<APIResponse<T>> => {
+    const authorization = `Beare ${localStorage.getItem('token')}` || '';
     return window.fetch( `${'http://localhost:3000'}/${url}`, {
         method,
         ...init,
         // credentials: 'include',
         headers: {
+            authorization,
             'accept-language': 'en',
         }
     } ).then( async response => {
@@ -16,9 +18,9 @@ export const FetchAPI = async <T>( url: string, method: Methods, init?: RequestI
             const json = await response.json();
             return { data: json };
         }
-        if ( response.status === 401 ) {
-            storage.removeItem('persist:root')
-        }
+        // if ( response.status === 401 ) {
+        //    token.length && storage.removeItem('persist:root')
+        // }
         // convert non-2xx HTTP responses into errors:
         const json = await response.json();
         return Promise.resolve( { error: json } );
