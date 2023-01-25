@@ -28,14 +28,16 @@ export function Login() {
                                 dispatch( userLogin( values ) as keyof unknown )
                             } }
                         >
-                            { ( { handleSubmit, handleChange, values, errors } ) =>
+                            { ( { handleSubmit, handleChange, values, errors, touched, handleBlur } ) =>
                                 <Grid item container direction='column'>
                                     <Box py='12px'>
                                         <Input
                                             name='email'
                                             onChange={ handleChange }
                                             value={ values.email }
-                                            helperText={errors.email && errors.email}
+                                            onBlur={ handleBlur }
+                                            error={!!(touched.email && errors.email)}
+                                            helperText={touched.email && errors.email ? errors.email : ''}
                                             label='Email'/>
 
                                     </Box>
@@ -44,7 +46,9 @@ export function Login() {
                                             name='password'
                                             onChange={ handleChange }
                                             value={ values.password }
-                                            helperText={errors.password && errors.password}
+                                            onBlur={ handleBlur }
+                                            helperText={touched.password && errors.password ? errors.password : ''}
+                                            error={!!(touched.password && errors.password)}
                                             type='password'
                                             label='Password'
                                         />
