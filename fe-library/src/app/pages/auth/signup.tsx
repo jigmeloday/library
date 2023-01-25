@@ -1,6 +1,7 @@
 import { Box, Grid } from '@mui/material';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { userLogin } from '../../services/states/credential-state/credential.slice';
 import { Button } from '../../shared/components/button/button.component';
 import { Input } from '../../shared/components/input/input.component';
@@ -11,7 +12,7 @@ import { LOGIN_SCHEMA } from './misc/validation/auth.misc';
 export function SignUp() {
 
     const dispatch = useDispatch();
-
+    const nav = useNavigate()
     return (
         <AuthComponent>
             <Grid item container direction='column'>
@@ -60,14 +61,15 @@ export function SignUp() {
                                     <Grid item container justifyContent='center' py='24px'>
                                         <Box px='4px'>
                                             <Typography
-                                                label='Dont have account? '
+                                                label='Already have an account? '
                                                 variant='subtitle2'
                                                 fontWeight='200'
                                             />
                                         </Box>
                                         <Typography className='cursor--pointer'
-                                                    label=' Sign Up'
+                                                    label=' Log In'
                                                     variant='subtitle2'
+                                                    click={() => nav('/authentication/login') }
                                         />
                                     </Grid>
                                 </Grid>
