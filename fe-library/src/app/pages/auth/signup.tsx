@@ -18,7 +18,7 @@ export function SignUp() {
             <Grid item container direction='column'>
                 <Grid item container py='20px' direction='column'>
                     <Grid item container direction='column' alignItems='center' xs={12}>
-                        <Typography label='Welcome Back' variant='h5' />
+                        <Typography label='Welcome' variant='h5' />
                         <Typography label='Welcome! Please enter your details.' variant='subtitle2' color='gray' />
                     </Grid>
                     <Grid item container py='22px'>
@@ -54,9 +54,19 @@ export function SignUp() {
                                             label='Password'
                                         />
                                     </Box>
-                                    <Grid item container justifyContent='end' py='12px'>
-                                        <Typography className='cursor--pointer' label='Forgot password' variant='subtitle2' fontWeight='200' />
-                                    </Grid>
+                                    <Box py='12px'>
+                                        <Input
+                                            name='password'
+                                            onChange={ handleChange }
+                                            value={ values.password }
+                                            onBlur={ handleBlur }
+                                            helperText={touched.password && errors.password ? errors.password : ''}
+                                            error={!!(touched.password && errors.password)}
+                                            type='password'
+                                            label='Confirm Password'
+                                        />
+                                    </Box>
+
                                     <Button click={ handleSubmit } label='Login' variant='contained' />
                                     <Grid item container justifyContent='center' py='24px'>
                                         <Box px='4px'>
