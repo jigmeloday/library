@@ -10,9 +10,12 @@ import { AuthComponent } from './components/auth.component';
 import { SIGNUP_SCHEMA } from './misc/validation/auth.misc';
 
 export function SignUp() {
-
     const dispatch = useDispatch();
-    const nav = useNavigate()
+    const nav = useNavigate();
+    const userCreation = (data: { email: string, password: string }) => {
+        
+        dispatch( userLogin( data ) as keyof unknown );
+    }
     return (
         <AuthComponent>
             <Grid item container direction='column'>
@@ -26,7 +29,7 @@ export function SignUp() {
                             initialValues={ { email: '', password: '', cPassword: '' } }
                             validationSchema={SIGNUP_SCHEMA}
                             onSubmit={ ( values ) => {
-                                dispatch( userLogin( { email: values.email, password: values.password } ) as keyof unknown )
+                                userCreation({ email: values.email, password: values.password })
                             } }
                         >
                             { ( { handleSubmit, handleChange, values, errors, touched, handleBlur } ) =>
