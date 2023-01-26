@@ -7,7 +7,7 @@ import { Button } from '../../shared/components/button/button.component';
 import { Input } from '../../shared/components/input/input.component';
 import { Typography } from '../../shared/components/typography/typography.component';
 import { AuthComponent } from './components/auth.component';
-import { LOGIN_SCHEMA } from './misc/validation/auth.misc';
+import { SIGNUP_SCHEMA } from './misc/validation/auth.misc';
 
 export function SignUp() {
 
@@ -23,10 +23,10 @@ export function SignUp() {
                     </Grid>
                     <Grid item container py='22px'>
                         <Formik
-                            initialValues={ { email: '', password: '' } }
-                            validationSchema={LOGIN_SCHEMA}
+                            initialValues={ { email: '', password: '', cPassword: '' } }
+                            validationSchema={SIGNUP_SCHEMA}
                             onSubmit={ ( values ) => {
-                                dispatch( userLogin( values ) as keyof unknown )
+                                dispatch( userLogin( { email: values.email, password: values.password } ) as keyof unknown )
                             } }
                         >
                             { ( { handleSubmit, handleChange, values, errors, touched, handleBlur } ) =>
@@ -56,12 +56,12 @@ export function SignUp() {
                                     </Box>
                                     <Box py='12px'>
                                         <Input
-                                            name='password'
+                                            name='cPassword'
                                             onChange={ handleChange }
-                                            value={ values.password }
+                                            value={ values.cPassword }
                                             onBlur={ handleBlur }
-                                            helperText={touched.password && errors.password ? errors.password : ''}
-                                            error={!!(touched.password && errors.password)}
+                                            helperText={touched.cPassword && errors.cPassword ? errors.cPassword : ''}
+                                            error={!!(touched.cPassword && errors.cPassword)}
                                             type='password'
                                             label='Confirm Password'
                                         />
