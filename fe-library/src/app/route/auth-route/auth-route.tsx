@@ -3,6 +3,7 @@ import { Routes, Route} from "react-router-dom";
 import { RouteModel } from '../../shared/models/shared.model';
 
 const Login = lazy(() => import('../../pages/auth/login'));
+const SignUp =  lazy(() => import('../../pages/auth/signup'))
 const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
 
 export function AuthRoute() {
@@ -14,7 +15,7 @@ export function AuthRoute() {
         },
         {
             id: '2',
-            component: <>Registration</>,
+            component: <SignUp/>,
             route: '/signup'
         },
         {
