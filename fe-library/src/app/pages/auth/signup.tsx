@@ -67,7 +67,7 @@ export function SignUp() {
                                         />
                                     </Box>
 
-                                    <Button click={ handleSubmit } label='Login' variant='contained' />
+                                    <Button click={ handleSubmit } label='Sign Up' variant='contained' />
                                     <Grid item container justifyContent='center' py='24px'>
                                         <Box px='4px'>
                                             <Typography
