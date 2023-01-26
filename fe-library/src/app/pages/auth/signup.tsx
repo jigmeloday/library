@@ -2,6 +2,7 @@ import { Box, Grid } from '@mui/material';
 import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { AuthFacade } from '../../services/facade-service/auth-facade';
 import { userLogin } from '../../services/states/credential-state/credential.slice';
 import { Button } from '../../shared/components/button/button.component';
 import { Input } from '../../shared/components/input/input.component';
@@ -13,8 +14,11 @@ export function SignUp() {
     const dispatch = useDispatch();
     const nav = useNavigate();
     const userCreation = (data: { email: string, password: string }) => {
-        
-        dispatch( userLogin( data ) as keyof unknown );
+        AuthFacade.signUp(data).then((res) => {
+            if ( res ) {
+                dispatch( userLogin( data ) as keyof unknown );
+            }
+        }).catch((error) => console.log(error))
     }
     return (
         <AuthComponent>
