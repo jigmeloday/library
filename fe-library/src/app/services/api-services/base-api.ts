@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import storage from 'redux-persist/es/storage';
 import { APIResponse, Methods } from '../../shared/models/shared.model';
 
@@ -23,6 +24,7 @@ export const FetchAPI = async <T>( url: string, method: Methods, init?: RequestI
         }
         // convert non-2xx HTTP responses into errors:
         const json = await response.json();
+        toast.error( json.message  );
         return Promise.resolve( { error: json } );
     } ).catch( response => {
         return Promise.resolve( { error: { errors: [response?.toString()] } } );
