@@ -7,11 +7,11 @@ const mongoose = require('mongoose');
 exports.user_login = (req, res, next) => {
     User.find({email: req.body.email}).exec().then((user) => {
         if (!user.length) {
-            return res.status(401).json({message: 'Unauthorized'});
+            return res.status(401).json({message: 'Email or Password is incorrect'});
         }
         bcrypt.compare(req.body.password, user[0].password, (err, success) => {
             if (err) {
-                return res.status(401).json({message: 'Unauthorized'});
+                return res.status(401).json({message: 'Email or Password is incorrect'});
             }
             if (success) {
                 const token = jwt.sign(
