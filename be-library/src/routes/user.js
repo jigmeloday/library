@@ -5,7 +5,7 @@ const routeGuard = require('../route-guard/route-guard');
 const multer = require('multer');
 const upload = multer();
 
-router.post('/signup', UserController.user_signup);
+router.post('/signup', upload.none(), UserController.user_signup);
 
 router.post('/signin', upload.none(), UserController.user_login );
 

@@ -3,8 +3,9 @@ import { Routes, Route} from "react-router-dom";
 import { RouteModel } from '../../shared/models/shared.model';
 
 const Login = lazy(() => import('../../pages/auth/login'));
+const SignUp =  lazy(() => import('../../pages/auth/signup'))
 const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
-
+const ForgotPassword = lazy(() => import('../../pages/auth/forgot-password'));
 export function AuthRoute() {
     const CORE_ROUTE: RouteModel[] = [
         {
@@ -14,13 +15,13 @@ export function AuthRoute() {
         },
         {
             id: '2',
-            component: <>Registration</>,
+            component: <SignUp/>,
             route: '/signup'
         },
         {
             id: '3',
-            component: <>Forgot Password</>,
-            route: '/book/:id'
+            component: <ForgotPassword/>,
+            route: '/forgot-password'
         }
     ];
 
