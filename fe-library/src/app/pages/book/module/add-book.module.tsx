@@ -4,6 +4,7 @@ import { memo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { theme } from '../../../../assest/theme';
 import { BookFacade } from '../../../services/facade-service/book-facade';
+import { Book } from '../../../services/model/book.model';
 import { getBook } from '../../../services/states/book-state/book.slice';
 import { Input } from '../../../shared/components/input/input.component';
 import { SharedModule } from '../../../shared/components/module/shared.module';
@@ -12,22 +13,21 @@ import { CustomContainer } from '../../../shared/style/shared.style';
 import { AddBookForm } from '../components/add-book.component';
 import './book.css'
 
-export function AddBook(props: { handleClick: () => void }) {
+export function AddBook(props: { handleClick: () => void; book?: Book }) {
     const [file, setFile] = useState('');
     const dispatch = useDispatch();
-
     return(
         <SharedModule title='Add Book' isOpen={true}>
             <Grid container item >
                <Formik
                    initialValues={{ 
-                       title: '',
-                       author: '',
-                       category: '',
-                       price: '',
-                       quantity: '',
+                       title: props?.book?.title || '',
+                       author: props?.book?.author || '',
+                       category: props?.book?.category || '',
+                       price: props?.book?.price || '',
+                       quantity: props?.book?.quantity || '',
                        isbn: '',
-                       summary: '',
+                       summary: props?.book?.summary || '',
                    }}
                    onSubmit={(values) => {
                        const data = {
@@ -42,6 +42,7 @@ export function AddBook(props: { handleClick: () => void }) {
                >
                    {({ handleChange, handleSubmit, values }) =>
                        <AddBookForm
+                           edit={!props?.book?._id}
                            setFile={setFile}
                            handleChange={handleChange} 
                            values={values}

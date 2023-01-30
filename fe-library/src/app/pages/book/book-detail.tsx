@@ -7,16 +7,21 @@ import { Button } from '../../shared/components/button/button.component';
 import { Typography } from '../../shared/components/typography/typography.component';
 import { BookCover } from '../../shared/utils/shared.utils';
 import { BookCard } from './book.style';
+import { AddBook } from './module/add-book.module';
 import { DeleteBook } from './module/delete-action';
 
 const NoDataComponent = lazy(() => import('../../components/no-data/no-data.component'));
 
 export function BookListing() {
     const [book, setBook] = useState<Book>();
+    const [edit, setEdit] = useState<boolean>(false);
     const [deleteBook, setDeleteBook] = useState<boolean>(false);
-    const handleClick = () => {
+    const editBook = () => {
+        setEdit(!edit);
+    }
+    const bookDelete = () => {
         setDeleteBook(!deleteBook);
-    };
+    }
     const id = useParams()['id']
     useEffect(() => {
         BookFacade.getBook(id as string).then(
@@ -32,7 +37,7 @@ export function BookListing() {
                            <img src={book?.coverImage? `http://localhost:3000/${book?.coverImage}` : BookCover} width='100%' height='100%'   className='object-fit--cover'/>
                        </BookCard>
                    </Grid>
-                   <Grid item xs={8} direction='column'>
+                   <Grid item container xs={8} direction='column'>
                        <Typography label={book?.title} variant='body1' fontSize={20} fontWeight='bold' />
                        <Typography label={book?.author} variant='body1' fontSize={20} />
                        <Typography label={`Genre: ${book?.category}`} variant='subtitle1' fontSize={14} />
@@ -43,14 +48,18 @@ export function BookListing() {
                            <Typography label='Summary: ' variant='subtitle1' fontSize={16} fontWeight='bold' /> {book?.summary}
                        </Box>
                        <Grid item container >
-                           <Button label='Delete' click={handleClick} />
+                           <Button label='Delete' click={bookDelete} />
+                           <Button label='Edit' click={editBook} />
                            <Button label='READ' />
                        </Grid>
                    </Grid>
                </Grid>
            </Grid>
             {
-                deleteBook && <DeleteBook handleClick={handleClick} />
+                deleteBook && <DeleteBook book={book?.title as string} handleClick={bookDelete} />
+            }
+            {
+                edit && <AddBook handleClick={editBook} book={book} />
             }
         </Grid>
     )

@@ -4,4 +4,5 @@ export interface AddBookFormProps {
     values: any;
     submit: any
     setFile: any
+    edit: boolean
 }

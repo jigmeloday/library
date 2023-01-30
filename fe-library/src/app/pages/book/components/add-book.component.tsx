@@ -56,15 +56,17 @@ export function AddBookForm (props: AddBookFormProps) {
                         label='Quantity' />
                 </Grid>
             </Grid>
-            <Grid item container direction='column'>
-                <Grid item xs={6} py='12px' >
-                    <Input
-                        name='isbn'
-                        onChange={props.handleChange}
-                        value={props.values.isbn}
-                        label='ISBN Number' />
+            {
+                props.edit && <Grid item container direction='column'>
+                    <Grid item xs={6} py='12px' >
+                        <Input
+                            name='isbn'
+                            onChange={props.handleChange}
+                            value={props.values.isbn}
+                            label='ISBN Number' />
+                    </Grid>
                 </Grid>
-            </Grid>
+            }
             <Grid item container justifyContent='center' py='12px'>
                 <Box className={ ['width--fit-content position--relative cursor--pointer', 'profile-upload'].join( ' ' ) }>
                     {
