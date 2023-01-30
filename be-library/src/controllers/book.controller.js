@@ -27,8 +27,8 @@ exports.get_book_by_id = (req, res) => {
     })
 }
 
-exports.update_book = ( req,res, next ) => {
-    const id = req.params.id;
+exports.update_book = ( req, res, next ) => {
+    const id = req.body._id;
     const updateVal = req.body;
 
     Book.updateOne({_id: id}, { $set: updateVal })

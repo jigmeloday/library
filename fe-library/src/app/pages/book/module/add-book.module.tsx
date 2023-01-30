@@ -34,7 +34,11 @@ export function AddBook(props: { handleClick: () => void; book?: Book }) {
                            ...values,
                            coverImage: file
                        }
-                       BookFacade.addBook(data).then((resp) => {
+
+                       !props.book?._id ? BookFacade.addBook(data) : BookFacade.editBook({
+                           ...values,
+                           _id: props.book?._id
+                       }) .then((resp) => {
                            props.handleClick();
                            dispatch(getBook() as keyof unknown)
                        }).catch((error) => console.log(error))

@@ -23,6 +23,6 @@ router.post('/', routeGuard, upload.single('coverImage') , bookController.post_b
 
 router.delete('/:id', routeGuard, bookController.delete_book)
 
-router.patch('/:id',routeGuard, bookController.update_book)
+router.patch('/',routeGuard, upload.none(), bookController.update_book)
 
 module.exports = router;
