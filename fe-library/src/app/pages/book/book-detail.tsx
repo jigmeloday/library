@@ -47,9 +47,11 @@ export function BookListing() {
                        <Box py='14px' width='40%'>
                            <Typography label='Summary: ' variant='subtitle1' fontSize={16} fontWeight='bold' /> {book?.summary}
                        </Box>
-                       <Grid item container >
-                           <Button label='Delete' click={bookDelete} />
-                           <Button label='Edit' click={editBook} />
+                       <Grid item container>
+                           <Button label='Delete' click={bookDelete}/>
+                           <Box px='12px'>
+                               <Button label='Edit' click={editBook}/>
+                           </Box>
                            <Button label='READ' />
                        </Grid>
                    </Grid>
