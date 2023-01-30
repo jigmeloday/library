@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { theme } from '../../../../assest/theme';
 import { BookFacade } from '../../../services/facade-service/book-facade';
 import { getBook } from '../../../services/states/book-state/book.slice';
-import { Button } from '../../../shared/components/button/button.component';
 import { Input } from '../../../shared/components/input/input.component';
 import { SharedModule } from '../../../shared/components/module/shared.module';
 import { TextArea } from '../../../shared/components/text-area/text-area.component';

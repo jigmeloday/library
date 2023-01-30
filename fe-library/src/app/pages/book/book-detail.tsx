@@ -7,11 +7,16 @@ import { Button } from '../../shared/components/button/button.component';
 import { Typography } from '../../shared/components/typography/typography.component';
 import { BookCover } from '../../shared/utils/shared.utils';
 import { BookCard } from './book.style';
+import { DeleteBook } from './module/delete-action';
 
 const NoDataComponent = lazy(() => import('../../components/no-data/no-data.component'));
 
 export function BookListing() {
     const [book, setBook] = useState<Book>();
+    const [deleteBook, setDeleteBook] = useState<boolean>(false);
+    const handleClick = () => {
+        setDeleteBook(!deleteBook);
+    };
     const id = useParams()['id']
     useEffect(() => {
         BookFacade.getBook(id as string).then(
@@ -38,12 +43,15 @@ export function BookListing() {
                            <Typography label='Summary: ' variant='subtitle1' fontSize={16} fontWeight='bold' /> {book?.summary}
                        </Box>
                        <Grid item container >
-                           <Button label='Delete' />
+                           <Button label='Delete' click={handleClick} />
                            <Button label='READ' />
                        </Grid>
                    </Grid>
                </Grid>
            </Grid>
+            {
+                deleteBook && <DeleteBook handleClick={handleClick} />
+            }
         </Grid>
     )
 }
