@@ -67,22 +67,24 @@ export function AddBookForm (props: AddBookFormProps) {
                     </Grid>
                 </Grid>
             }
-            <Grid item container justifyContent='center' py='12px'>
-                <Box className={ ['width--fit-content position--relative cursor--pointer', 'profile-upload'].join( ' ' ) }>
-                    {
-                        image ? <img src={image}
-                                     width='126px' height='126px' className='br-60 object-fit--cover mb-16'
-                                     alt='profile picture'/>: null
-                    }
-                    <CustomContainer bottom='20px' right='12px' className='br-60 px-6 py-4 cursor--pointer'
+            {
+                props.edit &&   <Grid item container justifyContent='center' py='12px'>
+                    <Box className={ ['width--fit-content position--relative cursor--pointer', 'profile-upload'].join( ' ' ) }>
+                        {
+                            image ? <img src={image}
+                                         width='126px' height='126px' className='br-60 object-fit--cover mb-16'
+                                         alt='profile picture'/>: null
+                        }
+                        <CustomContainer bottom='20px' right='12px' className='br-60 px-6 py-4 cursor--pointer'
 
-                    >
-                        <Button label='Upload cover image' variant='contained' />
-                    </CustomContainer>
-                    <input type="file" name="myfile" accept="image/png, image/jpeg"
-                           onChange={handleUpload} className={'profile-upload-input '} />
-                </Box>
-            </Grid>
+                        >
+                            <Button label='Upload cover image' variant='contained' />
+                        </CustomContainer>
+                        <input type="file" name="myfile" accept="image/png, image/jpeg"
+                               onChange={handleUpload} className={'profile-upload-input '} />
+                    </Box>
+                </Grid>
+            }
             <Grid item container direction='column'>
                 <TextArea
                     name='summary'
