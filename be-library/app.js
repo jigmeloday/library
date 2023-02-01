@@ -8,6 +8,7 @@ const book = require('./src/routes/books');
 const author = require('./src/routes/authors');
 const user = require('./src/routes/user');
 const profile = require('./src/routes/profiles');
+const category = require('./src/routes/categories');
 
 //Logger
 app.use(log('dev'));
@@ -44,6 +45,7 @@ app.use('/authors', author);
 app.use('/books', book);
 app.use('/user', user);
 app.use('/profile', profile);
+// app.use('/category', category);
 
 //error handler
 app.use((req, res, next) =>{

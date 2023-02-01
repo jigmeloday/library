@@ -51,9 +51,10 @@ exports.update_book = async ( req, res, next ) => {
     }
 }
 
-exports.post_book = (req, res, next) => {
+exports.post_book = async (req, res, next) => {
     const token = req.headers.authorization.split(" ")[1];
     const creatorId = jwt.verify(token, process.env.JWT_KEY).id;
+
     const book = new Book({
         _id:  new mongoose.Types.ObjectId(),
         title: req.body.title,
