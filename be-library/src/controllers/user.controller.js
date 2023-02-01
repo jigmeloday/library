@@ -22,7 +22,8 @@ exports.user_login = (req, res, next) => {
                     });
                 return res.status(200).json({
                     message: 'Sign In Success',
-                    token
+                    id: user[0]._id,
+                    token,
                 });
             }
             res.status(401).json({message: 'Unauthorized'});

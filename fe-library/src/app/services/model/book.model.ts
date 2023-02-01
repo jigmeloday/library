@@ -12,4 +12,5 @@ export interface Book{
     category: string,
     coverImage?: string,
     summary: string,
+    creatorId?: string
 }

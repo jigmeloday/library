@@ -18,7 +18,7 @@ const PageNotFound = lazy(() => import('../../components/page-not-found/page-not
 
 export function CoreRoute() {
     const url = useLocation().pathname;
-    const isAuthenticated = useSelector(selectToken)
+    const isAuthenticated = useSelector(selectToken);
     const CORE_ROUTE: RouteModel[] = [
         {
             id: '1',
