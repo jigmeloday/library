@@ -31,7 +31,6 @@ export function BookListing() {
             ( res ) => setBook( res?.data )
         )
     }, [] );
-    console.log(user)
     return (
         <Grid container item p='24px'>
             <Grid item container direction='column'>
