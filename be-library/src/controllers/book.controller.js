@@ -1,5 +1,6 @@
 const Book = require('../models/book');
 const mongoose = require('mongoose');
+const fs = require('fs');
 
 
 exports.get_books = (req, res, next) => {
@@ -78,6 +79,9 @@ exports.delete_book = (req, res, next) => {
         .exec()
         .then((resp) => {
             if (resp) {
+                fs.unlink(resp.coverImage, function (err){
+                    console.log(err)
+                })
                 res.status(201).json({message: resp })
             }else{
                 res.status(404).json({message: 'Not Found'})
