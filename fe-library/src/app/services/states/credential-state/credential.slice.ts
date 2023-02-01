@@ -6,10 +6,12 @@ export const CREDENTIAL_STATE_KEY = 'credential_key';
 
 export interface CredentialStateInterface {
     currentToken: string
+    currentUser: any
 }
 
 export const INITIAL_CREDENTIAL_VALUE: CredentialStateInterface = {
-    currentToken: ''
+    currentToken: '',
+    currentUser: null
 };
 
 export const userLogin = createAsyncThunk(
@@ -17,7 +19,7 @@ export const userLogin = createAsyncThunk(
     async ( payload:{ email: string, password: string }, thunkAPI ) => {
         const { data, error } = await AuthFacade.login(payload);
         if ( data ) {
-            return data?.token;
+            return data;
         }
         if ( error ) {
             return thunkAPI.rejectWithValue( error.errors );
@@ -32,8 +34,9 @@ export const CREDENTIAL_STATE = createSlice({
     extraReducers: builder => {
         builder
             .addCase(userLogin.fulfilled, (state, action) => {
-                localStorage.setItem('token', action.payload)
-                state.currentToken = action.payload
+                localStorage.setItem('token', action.payload.token);
+                state.currentToken = action.payload.token;
+                state.currentUser = action.payload.profile
             })
             .addCase(clearToken, (state, action) => {
                 state.currentToken = ''
@@ -44,3 +47,4 @@ export const CREDENTIAL_STATE = createSlice({
 export const credentialReducer = CREDENTIAL_STATE.reducer;
 export const getSharedState = ( rootState: any ): CredentialStateInterface => rootState[CREDENTIAL_STATE_KEY];
 export const selectToken = createSelector(getSharedState, state => state.currentToken );
+export const selectCurrentUser = createSelector(getSharedState, state => state.currentUser );
