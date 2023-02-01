@@ -28,20 +28,27 @@ exports.get_book_by_id = (req, res) => {
     })
 }
 
-exports.update_book = ( req, res, next ) => {
+exports.update_book = async ( req, res, next ) => {
     const id = req.body._id;
     const updateVal = req.body;
+    const token = req.headers.authorization.split(" ")[1];
+    const creatorId = jwt.verify(token, process.env.JWT_KEY).id;
+    const book = await Book.findById(id);
 
-    Book.updateOne({_id: id}, { $set: updateVal })
-        .exec()
-        .then((resp) =>{
-            if (resp) {
-                res.status(201).json({book: resp})
-            }else{
-                res.status(400).json({error: 'not working'})
-            }
-        })
-        .catch((error) => res.status(500).json({message:error }))
+    if (book.creatorId === creatorId) {
+        Book.updateOne({_id: id}, { $set: updateVal })
+            .exec()
+            .then((resp) =>{
+                if (resp) {
+                    res.status(201).json({book: resp})
+                }else{
+                    res.status(400).json({error: 'not working'})
+                }
+            })
+            .catch((error) => res.status(500).json({message:error }))
+    } else {
+        res.status(401).json({ message: 'Unauthorized' })
+    }
 }
 
 exports.post_book = (req, res, next) => {
