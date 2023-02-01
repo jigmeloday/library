@@ -37,12 +37,18 @@ export function AddBook(props: { handleClick: () => void; book?: Book }) {
                            coverImage: file
                        }
 
-                       !props.book?._id ? BookFacade.addBook(data) : BookFacade.editBook({
+                       !props.book?._id ? BookFacade.addBook(data).then(
+                           (res) =>
+                           {
+                               props.handleClick();
+                               dispatch(getBook() as keyof unknown)
+                           }
+                       ) : BookFacade.editBook({
                            ...values,
                            _id: props.book?._id
                        }) .then((resp) => {
                            props.handleClick();
-                           !props.book?._id ? dispatch(getBook() as keyof unknown) : nav('/books')
+                           nav('/books')
                        }).catch((error) => console.log(error))
                    } }
                >
