@@ -1,7 +1,7 @@
 const Book = require('../models/book');
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken');
 const fs = require('fs');
-
 
 exports.get_books = (req, res, next) => {
 
@@ -45,6 +45,8 @@ exports.update_book = ( req, res, next ) => {
 }
 
 exports.post_book = (req, res, next) => {
+    const token = req.headers.authorization.split(" ")[1];
+    const creatorId = jwt.verify(token, process.env.JWT_KEY).id;
     const book = new Book({
         _id:  new mongoose.Types.ObjectId(),
         title: req.body.title,
@@ -54,6 +56,7 @@ exports.post_book = (req, res, next) => {
         quantity: req.body.quantity || 1,
         summary: req.body.summary,
         coverImage: req.file.path,
+        creatorId: creatorId,
         author: req.body.author,
     })
     book.save()
@@ -73,19 +76,27 @@ exports.post_book = (req, res, next) => {
         });
 };
 
-exports.delete_book = (req, res, next) => {
+exports.delete_book = async (req, res, next) => {
     const id = req.params.id;
-    Book.findByIdAndDelete(id)
-        .exec()
-        .then((resp) => {
-            if (resp) {
-                fs.unlink(resp.coverImage, function (err){
-                    console.log(err)
-                })
-                res.status(201).json({message: resp })
-            }else{
-                res.status(404).json({message: 'Not Found'})
-            }
-        })
-        .catch((err) => res.status(500).json({message: err}))
+    const token = req.headers.authorization.split(" ")[1];
+    const creatorId = jwt.verify(token, process.env.JWT_KEY).id;
+    console.log(req.params)
+    const book = await Book.findById(id);
+    if ( creatorId ===  book.creatorId) {
+        Book.findByIdAndDelete(id)
+            .exec()
+            .then((resp) => {
+                if (resp) {
+                    fs.unlink(resp.coverImage, function (err){
+                        console.log(err)
+                    })
+                    res.status(201).json({message: resp })
+                }else{
+                    res.status(404).json({message: 'Not Found'})
+                }
+            })
+            .catch((err) => res.status(500).json({message: err}))
+    } else{
+        res.status(401).json({ message: 'Unauthorized' })
+    }
 }
