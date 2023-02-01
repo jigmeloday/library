@@ -36,7 +36,7 @@ export const CREDENTIAL_STATE = createSlice({
             .addCase(userLogin.fulfilled, (state, action) => {
                 localStorage.setItem('token', action.payload.token);
                 state.currentToken = action.payload.token;
-                state.currentUser = action.payload.id
+                state.currentUser = action.payload.profile
             })
             .addCase(clearToken, (state, action) => {
                 state.currentToken = ''

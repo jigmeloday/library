@@ -31,6 +31,7 @@ export function BookListing() {
             ( res ) => setBook( res?.data )
         )
     }, [] );
+    console.log(user)
     return (
         <Grid container item p='24px'>
             <Grid item container direction='column'>
@@ -53,7 +54,7 @@ export function BookListing() {
                                         fontWeight='bold'/> { book?.summary }
                         </Box>
                         <Grid item container>
-                            { user === book?.creatorId ?
+                            { user.uid === book?.creatorId ?
                                 <>
                                     <Button label='Delete' click={ bookDelete }/>
                                     <Box px='12px'>
