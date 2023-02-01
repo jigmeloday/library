@@ -1,9 +1,10 @@
-const Category = require('../models/book');
+const mongoose = require('mongoose');
+const Category = require('../models/category');
 
 exports.get_category = (req, res, next) => {
     Category.find().exec()
         .then((resp) =>
-            res.status(200).json({ books: resp })
+            res.status(200).json({ category: resp })
         )
         .catch((error) =>
             res.status(500).json({ message: error })

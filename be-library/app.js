@@ -45,7 +45,7 @@ app.use('/authors', author);
 app.use('/books', book);
 app.use('/user', user);
 app.use('/profile', profile);
-// app.use('/category', category);
+app.use('/category', category);
 
 //error handler
 app.use((req, res, next) =>{
