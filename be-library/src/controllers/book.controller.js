@@ -80,7 +80,6 @@ exports.delete_book = async (req, res, next) => {
     const id = req.params.id;
     const token = req.headers.authorization.split(" ")[1];
     const creatorId = jwt.verify(token, process.env.JWT_KEY).id;
-    console.log(req.params)
     const book = await Book.findById(id);
     if ( creatorId ===  book.creatorId) {
         Book.findByIdAndDelete(id)
