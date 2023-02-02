@@ -1,4 +1,5 @@
-import { createSelector, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSelector, createSlice } from '@reduxjs/toolkit';
+import { SharedFacade } from '../../facade-service/shared-facade';
 import { setMenu, setTheme } from './shared.action';
 
 export const SHARED_STATE_KEY = 'shared_key';
@@ -6,12 +7,27 @@ export const SHARED_STATE_KEY = 'shared_key';
 export interface SharedStateInterface {
     currentTheme: string
     setMenu: any
+    category: any
 }
 
 export const INITIAL_SHARED_VALUE: SharedStateInterface = {
     currentTheme: 'light',
-    setMenu: null
+    setMenu: null,
+    category: null
 };
+
+export const getCategory = createAsyncThunk(
+    'shared/getCategory',
+    async ( payload:{ email: string, password: string }, thunkAPI ) => {
+        const { data, error } = await SharedFacade.fetchCategory();
+        if ( data ) {
+            return data;
+        }
+        if ( error ) {
+            return thunkAPI.rejectWithValue( error.errors );
+        }
+    }
+)
 
 export const SHARED_SLICE = createSlice({
     name: SHARED_STATE_KEY,
@@ -25,6 +41,9 @@ export const SHARED_SLICE = createSlice({
             .addCase(setMenu, (state, action) => {
                 state.setMenu = action.payload;
             })
+            .addCase(getCategory.fulfilled, (state, action) => {
+                state.category = action.payload;
+            });
         ;
     }
 });
