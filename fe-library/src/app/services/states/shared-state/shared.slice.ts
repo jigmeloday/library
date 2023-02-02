@@ -18,7 +18,7 @@ export const INITIAL_SHARED_VALUE: SharedStateInterface = {
 
 export const getCategory = createAsyncThunk(
     'shared/getCategory',
-    async ( payload:{ email: string, password: string }, thunkAPI ) => {
+    async ( payload:void, thunkAPI ) => {
         const { data, error } = await SharedFacade.fetchCategory();
         if ( data ) {
             return data;
@@ -52,3 +52,4 @@ export const sharedReducer = SHARED_SLICE.reducer;
 export const getSharedState = ( rootState: any ): SharedStateInterface => rootState[SHARED_STATE_KEY];
 export const selectCurrentTheme = createSelector(getSharedState, state => state.currentTheme );
 export const selectMenu = createSelector(getSharedState, state => state.setMenu );
+export const selectCategory = createSelector(getSharedState, state => state.category)
