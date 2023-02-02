@@ -34,11 +34,6 @@ export function AddBookForm( props: AddBookFormProps ) {
                 </Grid>
             </Grid>
             <Grid item container direction='column'>
-                {/*<Input*/ }
-                {/*    name='category'*/ }
-                {/*    onChange={props.handleChange}*/ }
-                {/*    value={props.values.category}*/ }
-                {/*    label='Genre'  />*/ }
                 <FormControl fullWidth>
                     <InputLabel id="demo-simple-select-label">Genre</InputLabel>
                 <Select

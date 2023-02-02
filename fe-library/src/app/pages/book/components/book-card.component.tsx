@@ -29,7 +29,7 @@ export function BookCard(props:{ items: Book }) {
                 <Grid item container direction='column'>
                     <Typography label={props?.items?.title} variant='body1' />
                     <Typography label={props?.items?.author} variant='caption' />
-                    <Typography label={props?.items?.category} variant='caption'  />
+                    <Typography label={props?.items?.category?.name} variant='caption'  />
                     {/*not sure whether to use or not*/}
                     {/*<Rating name="read-only" value={4} readOnly />*/}
                 </Grid>
