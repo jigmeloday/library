@@ -7,12 +7,13 @@ export function Category() {
     const categoryList = useSelector(selectCategory);
     const dispatch = useDispatch();
     useEffect(() => {
-        categoryList && dispatch(getCategory() as keyof unknown);
+        !categoryList && dispatch(getCategory() as keyof unknown);
     }, []);
+    console.log(categoryList)
     return(
        <Grid container item>
            {
-               categoryList.category?.map(() =>
+               categoryList?.category?.map(() =>
                    <>hllo</>
                )
            }
