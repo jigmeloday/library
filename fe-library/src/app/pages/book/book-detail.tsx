@@ -15,7 +15,7 @@ import { DeleteBook } from './module/delete-action';
 const NoDataComponent = lazy( () => import('../../components/no-data/no-data.component') );
 
 export function BookListing() {
-    const [ book, setBook ] = useState<Book>();
+    const [ book, setBook ] = useState<any>();
     const [ edit, setEdit ] = useState<boolean>( false );
     const [ deleteBook, setDeleteBook ] = useState<boolean>( false );
     const user = useSelector(selectCurrentUser)
@@ -37,20 +37,20 @@ export function BookListing() {
                 <Grid item container direction='row'>
                     <Grid item xs={ 4 } py='12px' pr='12px'>
                         <BookCard>
-                            <img src={ book?.coverImage ? `http://localhost:3000/${ book?.coverImage }` : BookCover }
+                            <img src={ book?.book?.coverImage ? `http://localhost:3000/${ book?.book?.coverImage }` : BookCover }
                                  width='100%' height='100%' className='object-fit--cover'/>
                         </BookCard>
                     </Grid>
                     <Grid item container xs={ 8 } direction='column'>
-                        <Typography label={ book?.title } variant='body1' fontSize={ 20 } fontWeight='bold'/>
-                        <Typography label={ book?.author } variant='body1' fontSize={ 20 }/>
-                        <Typography label={ `Genre: ${ book?.category }` } variant='subtitle1' fontSize={ 14 }/>
-                        <Typography label={ `Price: $${ book?.price }` } variant='subtitle1' fontSize={ 14 }/>
+                        <Typography label={ book?.book?.title } variant='body1' fontSize={ 20 } fontWeight='bold'/>
+                        <Typography label={ book?.book?.author } variant='body1' fontSize={ 20 }/>
+                        <Typography label={ `Genre: ${ book?.book?.category?.name }` } variant='subtitle1' fontSize={ 14 }/>
+                        <Typography label={ `Price: $${ book?.book?.price }` } variant='subtitle1' fontSize={ 14 }/>
                         <Typography label='Posted by: Jigme' variant='subtitle1' fontSize={ 14 }/>
                         <Typography label='Date: 12-12-12' variant='subtitle1' fontSize={ 14 }/>
                         <Box py='14px' width='40%'>
                             <Typography label='Summary: ' variant='subtitle1' fontSize={ 16 }
-                                        fontWeight='bold'/> { book?.summary }
+                                        fontWeight='bold'/> { book?.book?.summary }
                         </Box>
                         <Grid item container>
                             { user.uid === book?.creatorId ?
