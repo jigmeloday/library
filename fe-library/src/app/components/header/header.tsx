@@ -8,13 +8,25 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '../../shared/components/button/button.component';
 import { ProfileContainer } from '../profile-image/profile-image.style';
 import { ProfileImage } from '../../shared/utils/shared.utils';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { selectToken } from '../../services/states/credential-state/credential.slice';
+import { setMenu } from '../../services/states/shared-state/shared.action';
+import { SharedMenu } from '../../shared/components/menu/shared.menu';
+import { HeaderMenu } from './header-menu/header-menu.component';
 
 export function HeaderComponent() {
     const url = useLocation().pathname;
     const nav = useNavigate();
     const token = useSelector(selectToken);
+    const dispatch = useDispatch();
+    const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+    const openMenu = (event: React.MouseEvent<HTMLElement>) => {
+       setAnchorEl(event.currentTarget)
+    }
+    const handleClose = () => {
+        setAnchorEl(null)
+    }
 
     return(
         <HeaderContainer>
@@ -43,9 +55,10 @@ export function HeaderComponent() {
                                 <ProfileContainer
                                     borderRadius={50}
                                     border={`4px solid
-                             ${theme('light').palette.grey.A100}`}
+                                    ${theme('light').palette.grey.A100}`}
                                     width='60px' height='60px'
                                     className='cursor--pointer'
+                                    onClick={openMenu}
                                 >
                                     <img src={ProfileImage} width='100%' height='100%'   className='object-fit--cover border-radius-full'
                                     />
@@ -56,6 +69,12 @@ export function HeaderComponent() {
                     </Grid>
                 </Grid>
             </Grid>
+            {
+                open &&
+                <SharedMenu anchorEl={anchorEl} open={true} handleClose={handleClose} >
+                    <HeaderMenu />
+                </SharedMenu>
+            }
         </HeaderContainer>
     )
 }
