@@ -32,7 +32,7 @@ export function BookListing() {
             </Grid>
             <Grid item container direction='row' py='2px' px='14px' justifyContent='start'>
                 {
-                    book?.books?.map((item: Book ) =>
+                    book?.book?.map((item: Book ) =>
                         <Grid item py='10px' px='8px' width='24%' key={item._id}>
                             <BookCard items={item} />
                         </Grid>

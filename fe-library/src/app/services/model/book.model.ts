@@ -1,15 +1,16 @@
 export interface GetBooks {
-    books: Book[]
+    book: Book[]
 }
 
 export interface Book{
     _id?: string,
     title: string,
-    isbn: string,
+    isbn?: string,
     author: string,
     price: string,
     quantity: string,
-    category: string,
-    coverImage: string,
+    category?:any,
+    coverImage?: string,
     summary: string,
+    creatorId?: string
 }

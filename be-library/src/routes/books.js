@@ -2,14 +2,15 @@ const express = require('express');
 const multer = require('multer');
 const router = express.Router();
 const routeGuard = require('../route-guard/route-guard');
-const bookController = require('../controllers/book.controller')
+const bookController = require('../controllers/book.controller');
+const isFile = false;
 
 const storage = multer.diskStorage({
     destination: function (req, file,cb) {
         cb(null, './files/');
     },
     filename: function (req, file, cb) {
-        cb(null, new Date().toISOString() + file.originalname);
+        cb(null, new Date().toISOString() + file?.originalname);
     }
 })
 
@@ -23,6 +24,6 @@ router.post('/', routeGuard, upload.single('coverImage') , bookController.post_b
 
 router.delete('/:id', routeGuard, bookController.delete_book)
 
-router.patch('/:id',routeGuard, bookController.update_book)
+router.patch('/',routeGuard, upload.none(), bookController.update_book)
 
 module.exports = router;
