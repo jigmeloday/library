@@ -37,8 +37,25 @@ exports.post_category = (req, res, next) => {
 exports.get_category_by_id = async (req, res, next) => {
     const id = req.params.id;
     try{
-        books = await Book.find({ category: id });
+       const books = await Book.find({ category: id });
         res.status(200).json({ books: books });
+    } catch (e) {
+        res.status(500).json({ message: e })
+    }
+}
+
+exports.get_home_category = async (req, res, next) => {
+    try{
+        const categories = await Category.find();
+        const categoryArray = [];
+        for (const category of categories) {
+            categoryArray.push({
+                ...category._doc,
+                book: await Book.find({ category: category._id  })
+            });
+        }
+        console.log(categoryArray);
+        res.status(200).json({ books: 'hello' });
     } catch (e) {
         res.status(500).json({ message: e })
     }
