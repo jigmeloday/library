@@ -20,18 +20,25 @@ exports.get_books = async (req, res, next) => {
     }
 }
 
-exports.get_book_by_id = (req, res) => {
-    Book.findById(req.params.id).exec().then((book) =>
-        {
-            if(book){
-                res.status(200).json(book)
-            }else{
-                res.status(404).json({message: 'Not Found'})
-            }
-        }
-    ).catch((err) => {
-        res.status(500).json({ message: err })
-    })
+exports.get_book_by_id = async (req, res) => {
+    try{
+        const book = await Book.findById(req.params.id);
+        res.status(200).json({ book: {...book._doc, category: await Category.findOne({ _id: book.category })} });
+
+    } catch (e) {
+        res.status(500).json({ message: error });
+    }
+    // Book.findById(req.params.id).exec().then((book) =>
+    //     {
+    //         if(book){
+    //             res.status(200).json(book)
+    //         }else{
+    //             res.status(404).json({message: 'Not Found'})
+    //         }
+    //     }
+    // ).catch((err) => {
+    //     res.status(500).json({ message: err })
+    // })
 }
 
 exports.update_book = async ( req, res, next ) => {
