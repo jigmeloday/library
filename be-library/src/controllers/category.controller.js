@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Category = require('../models/category');
+const Book = require('../models/book');
 
 exports.get_category = (req, res, next) => {
     Category.find().exec()
@@ -32,3 +33,13 @@ exports.post_category = (req, res, next) => {
             res.status(500).json({ message: err })
         });
 };
+
+exports.get_category_by_id = async (req, res, next) => {
+    const id = req.params.id;
+    try{
+        books = await Book.find({ category: id });
+        res.status(200).json({ books: books });
+    } catch (e) {
+        res.status(500).json({ message: e })
+    }
+}
