@@ -10,7 +10,7 @@ import { ProfileContainer } from '../../../components/profile-image/profile-imag
 import { useNavigate } from 'react-router-dom';
 
 export function BookCard(props:{ items: Book }) {
-    const nav = useNavigate()
+    const nav = useNavigate();
     return(
         <Card>
             <Grid item container justifyContent='center'>
