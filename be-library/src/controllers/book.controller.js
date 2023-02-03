@@ -28,17 +28,6 @@ exports.get_book_by_id = async (req, res) => {
     } catch (e) {
         res.status(500).json({ message: error });
     }
-    // Book.findById(req.params.id).exec().then((book) =>
-    //     {
-    //         if(book){
-    //             res.status(200).json(book)
-    //         }else{
-    //             res.status(404).json({message: 'Not Found'})
-    //         }
-    //     }
-    // ).catch((err) => {
-    //     res.status(500).json({ message: err })
-    // })
 }
 
 exports.update_book = async ( req, res, next ) => {
