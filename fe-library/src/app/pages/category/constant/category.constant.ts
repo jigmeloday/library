@@ -6,8 +6,8 @@ export const COLOR = {
     contemporary: '#1F547D',
     dystopian: '#95BC8C',
     mystery: '#9F7986',
-    thriller: '#FFD98A',
-    paranormal: '#D8D8D8',
+    thriller: '#fdd57d',
+    paranormal: '#6c6c6c',
     historicalfiction:'#FD9F03',
     sciencefiction: '#78CBCF',
     children: '#333333'
@@ -21,7 +21,7 @@ export const BG_COLOR = {
     dystopian: 'rgba(149,188,140,0.5)',
     mystery: 'rgba(159,121,134,0.5)',
     thriller: 'rgba(255,217,138,0.5)',
-    paranormal: 'rgba(216,216,216,0.5)',
+    paranormal: 'rgba(108,108,108,0.5)',
     historicalfiction:'rgba(253,159,3,0.5)',
     sciencefiction: 'rgba(120,203,207,0.5)',
     children: 'rgba(51,51,51,0.5)'
