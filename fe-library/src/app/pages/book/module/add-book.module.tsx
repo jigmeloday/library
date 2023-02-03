@@ -24,7 +24,7 @@ export function AddBook(props: { handleClick: () => void; book?: Book }) {
         if ( !category ) {
             dispatch(getCategory() as keyof unknown)
         }
-    }, [])
+    }, []);
     return(
         <SharedModule title='Add Book' isOpen={true}>
             <Grid container item >
@@ -32,7 +32,7 @@ export function AddBook(props: { handleClick: () => void; book?: Book }) {
                    initialValues={{ 
                        title: props?.book?.title || '',
                        author: props?.book?.author || '',
-                       category: props?.book?.category || '',
+                       category: props?.book?.category?._id || '',
                        price: props?.book?.price || '',
                        quantity: props?.book?.quantity || '',
                        isbn: '',

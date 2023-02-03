@@ -53,7 +53,7 @@ export function BookListing() {
                                         fontWeight='bold'/> { book?.book?.summary }
                         </Box>
                         <Grid item container>
-                            { user.uid === book?.creatorId ?
+                            { user.uid === book?.book?.creatorId ?
                                 <>
                                     <Button label='Delete' click={ bookDelete }/>
                                     <Box px='12px'>
@@ -66,10 +66,10 @@ export function BookListing() {
                 </Grid>
             </Grid>
             {
-                deleteBook && <DeleteBook book={ book?.title as string } handleClick={ bookDelete }/>
+                deleteBook && <DeleteBook book={ book?.book?.title as string } handleClick={ bookDelete }/>
             }
             {
-                edit && <AddBook handleClick={ editBook } book={ book }/>
+                edit && <AddBook handleClick={ editBook } book={ book?.book }/>
             }
         </Grid>
     )
