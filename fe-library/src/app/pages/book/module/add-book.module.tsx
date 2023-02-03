@@ -1,12 +1,13 @@
 import { Box, Grid } from '@mui/material';
 import { Formik } from 'formik';
-import { memo, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { memo, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { theme } from '../../../../assest/theme';
 import { BookFacade } from '../../../services/facade-service/book-facade';
 import { Book } from '../../../services/model/book.model';
 import { getBook } from '../../../services/states/book-state/book.slice';
+import { getCategory, selectCategory } from '../../../services/states/shared-state/shared.slice';
 import { Input } from '../../../shared/components/input/input.component';
 import { SharedModule } from '../../../shared/components/module/shared.module';
 import { TextArea } from '../../../shared/components/text-area/text-area.component';
@@ -17,7 +18,13 @@ import './book.css'
 export function AddBook(props: { handleClick: () => void; book?: Book }) {
     const [file, setFile] = useState('');
     const dispatch = useDispatch();
-    const nav = useNavigate()
+    const category = useSelector(selectCategory)
+    const nav = useNavigate();
+    useEffect(() => {
+        if ( !category ) {
+            dispatch(getCategory() as keyof unknown)
+        }
+    }, [])
     return(
         <SharedModule title='Add Book' isOpen={true}>
             <Grid container item >
@@ -56,6 +63,7 @@ export function AddBook(props: { handleClick: () => void; book?: Book }) {
                        <AddBookForm
                            edit={!props?.book?._id}
                            setFile={setFile}
+                           category={category?.category}
                            handleChange={handleChange} 
                            values={values}
                            submit={handleSubmit}

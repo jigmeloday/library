@@ -1,5 +1,5 @@
 export interface GetBooks {
-    books: Book[]
+    book: Book[]
 }
 
 export interface Book{
@@ -9,7 +9,7 @@ export interface Book{
     author: string,
     price: string,
     quantity: string,
-    category: string,
+    category?:any,
     coverImage?: string,
     summary: string,
     creatorId?: string

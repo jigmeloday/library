@@ -1,17 +1,23 @@
 const Book = require('../models/book');
+const Category = require('../models/category');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 
-exports.get_books = (req, res, next) => {
-
-    Book.find().exec()
-        .then((resp) =>
-            res.status(200).json({ books: resp })
-        )
-        .catch((error) =>
-            res.status(500).json({ message: error })
-        )
+exports.get_books = async (req, res, next) => {
+    try{
+       const books = await Book.find().exec();
+       const bookArray = [];
+       for (const book of books) {
+           bookArray.push({
+               ...book._doc,
+               category: await Category.findOne({ _id: book.category })
+           })
+       }
+       res.status(200).json({ book: bookArray });
+    } catch ( e) {
+         res.status(500).json({ message: error })
+    }
 }
 
 exports.get_book_by_id = (req, res) => {
