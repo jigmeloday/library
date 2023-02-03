@@ -7,18 +7,18 @@ export const NAVIGATION: NavigationModel[] = [
         label: 'HOME'
     },
     {
-        id: '1',
+        id: '2',
         path: '/categories',
         label: 'CATEGORY'
     },
     {
-        id: '2',
+        id: '3',
         path: '/books',
         label: 'BOOKS'
     },
     {
         id: '1',
         path: '/authors',
-        label: 'AUTHORS'
+        label: 'READER'
     }
 ]
