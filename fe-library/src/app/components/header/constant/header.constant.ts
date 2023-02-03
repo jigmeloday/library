@@ -9,7 +9,7 @@ export const NAVIGATION: NavigationModel[] = [
     {
         id: '2',
         path: '/categories',
-        label: 'CATEGORY'
+        label: 'GENRE'
     },
     {
         id: '3',
