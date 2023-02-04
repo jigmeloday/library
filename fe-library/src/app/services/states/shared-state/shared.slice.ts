@@ -5,15 +5,17 @@ import { setMenu, setTheme } from './shared.action';
 export const SHARED_STATE_KEY = 'shared_key';
 
 export interface SharedStateInterface {
-    currentTheme: string
-    setMenu: any
-    category: any
+    currentTheme: string;
+    setMenu: any;
+    category: any;
+    homeListing: any;
 }
 
 export const INITIAL_SHARED_VALUE: SharedStateInterface = {
     currentTheme: 'light',
     setMenu: null,
-    category: null
+    category: null,
+    homeListing: undefined
 };
 
 export const getCategory = createAsyncThunk(
@@ -27,7 +29,20 @@ export const getCategory = createAsyncThunk(
             return thunkAPI.rejectWithValue( error.errors );
         }
     }
-)
+);
+
+export const getHomeCategory = createAsyncThunk(
+    'shared/getHomeCategory',
+    async ( payload:void, thunkAPI ) => {
+        const { data, error } = await SharedFacade.fetchHomeCategory();
+        if ( data ) {
+            return data;
+        }
+        if ( error ) {
+            return thunkAPI.rejectWithValue( error.errors );
+        }
+    }
+);
 
 export const SHARED_SLICE = createSlice({
     name: SHARED_STATE_KEY,
@@ -43,7 +58,10 @@ export const SHARED_SLICE = createSlice({
             })
             .addCase(getCategory.fulfilled, (state, action) => {
                 state.category = action.payload;
-            });
+            })
+            .addCase(getHomeCategory.fulfilled, (state, action) => {
+                state.homeListing = action.payload;
+            })
         ;
     }
 });
@@ -51,5 +69,6 @@ export const SHARED_SLICE = createSlice({
 export const sharedReducer = SHARED_SLICE.reducer;
 export const getSharedState = ( rootState: any ): SharedStateInterface => rootState[SHARED_STATE_KEY];
 export const selectCurrentTheme = createSelector(getSharedState, state => state.currentTheme );
+export const selectHomeItem = createSelector(getSharedState, state => state.homeListing );
 export const selectMenu = createSelector(getSharedState, state => state.setMenu );
 export const selectCategory = createSelector(getSharedState, state => state.category)

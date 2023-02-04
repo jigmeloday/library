@@ -9,5 +9,5 @@ export const fetchCategoryByIDAPI = (id: string) => {
 }
 
 export const fetchHomeCategoryAPI = () => {
-    return FetchAPI('home/all', 'GET');
+    return FetchAPI('category/home/all', 'GET');
 }
