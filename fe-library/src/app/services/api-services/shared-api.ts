@@ -7,3 +7,7 @@ export const fetchCategoryAPI = () => {
 export const fetchCategoryByIDAPI = (id: string) => {
     return FetchAPI(`category/${id}`, 'GET')
 }
+
+export const fetchHomeCategoryAPI = () => {
+    return FetchAPI('category/home/all', 'GET');
+}

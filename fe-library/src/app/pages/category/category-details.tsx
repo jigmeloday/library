@@ -1,11 +1,13 @@
 import { Grid } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { SharedFacade } from '../../services/facade-service/shared-facade';
 import { Book } from '../../services/model/book.model';
 import BookListing from '../book/book-listing';
 import { BookCard } from '../book/components/book-card.component';
+
+const NoData = lazy(() => import('../../components/no-data/no-data.component'));
 
 export function CategoryDetails() {
     const [books, setBooks] = useState<any>();
@@ -19,11 +21,15 @@ export function CategoryDetails() {
     return(
         <Grid item container direction='row' py='2px' px='14px' justifyContent='start'>
             {
-                books?.books?.map((item: Book ) =>
-                    <Grid item py='10px' px='8px' width='24%' key={item._id}>
-                        <BookCard items={item} />
+                books?.books?.length ?
+                    books?.books?.map((item: Book ) =>
+                        <Grid item py='10px' px='8px' width='24%' key={item._id}>
+                            <BookCard items={item} />
+                        </Grid>
+                    ) :
+                    <Grid container item pt='84px'>
+                        <NoData />
                     </Grid>
-                )
             }
         </Grid>
     )
