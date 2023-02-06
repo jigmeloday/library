@@ -28,8 +28,8 @@ export function Home() {
                             {
                                 items.books.length ?
                                     items?.books?.map( ( book: any ) =>
-                                        <Box width='20%' padding='12px'>
-                                            <BookCard items={ book } key={ `${ book._id }+${ book.title }` }/>
+                                        <Box width='20%' padding='12px' key={ `${ book._id }+${ book.title }` }>
+                                            <BookCard items={ book } />
                                         </Box> ) :
                                     <Grid item container>
                                         <NoData/>

@@ -38,7 +38,7 @@ exports.get_category_by_id = async (req, res, next) => {
     const id = req.params.id;
     try{
        const books = await Book.find({ category: id });
-        res.status(200).json({ books: books });
+        res.status(200).json({ books: books.reverse() });
     } catch (e) {
         res.status(500).json({ message: e })
     }
