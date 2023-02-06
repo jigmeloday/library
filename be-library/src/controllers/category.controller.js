@@ -51,7 +51,7 @@ exports.get_home_category = async (req, res, next) => {
         for (const category of categories) {
             categoryArray.push({
                 ...category._doc,
-                books: await Book.find({ category: category._id  })
+                books: await Book.find({ category: category._id  }).limit(4)
             });
         }
         res.status(200).json({ books: categoryArray });

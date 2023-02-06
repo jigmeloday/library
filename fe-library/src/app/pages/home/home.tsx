@@ -24,7 +24,7 @@ export function Home() {
                         <Typography label={ items?.name } variant='body1' fontWeight='bold'
                                     click={ () => nav( `/categories/${ items._id }` ) }
                                     className='cursor--pointer'/>
-                        <Grid item container direction='row'>
+                        <Grid item container direction='row' px='12px'>
                             {
                                 items.books.length ?
                                     items?.books?.map( ( book: any ) =>
