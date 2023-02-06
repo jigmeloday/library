@@ -1,7 +1,8 @@
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getHomeCategory, selectHomeItem } from '../../services/states/shared-state/shared.slice';
+import { Typography } from '../../shared/components/typography/typography.component';
 import { BookCard } from '../book/components/book-card.component';
 
 export function Home() {
@@ -15,13 +16,15 @@ export function Home() {
         <Grid container item>
             {
                 categoryList?.books?.map((items: any) =>
-                        <Grid item container key={items?._id}>
-                            {items.name}
+                        <Grid item container key={items?._id} p='20px'>
+                           <Typography label= {items?.name} variant='body1' fontWeight='bold' className='cursor--pointer' />
                             <Grid item container direction='row'>
                                 {
                                    items.books.length ?
                                        items?.books?.map((book: any) =>
-                                           <BookCard items={book} key={`${book._id}+${book.title}`}/>): <>NO data</>
+                                           <Box width='20%' padding='12px' >
+                                               <BookCard items={book} key={`${book._id}+${book.title}`}/>
+                                           </Box>): <>NO data</>
                                 }
                             </Grid>
                         </Grid>
