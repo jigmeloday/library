@@ -14,7 +14,7 @@ exports.get_books = async (req, res, next) => {
                category: await Category.findOne({ _id: book.category })
            })
        }
-       res.status(200).json({ book: bookArray });
+       res.status(200).json({ book: bookArray.reverse() });
     } catch ( e) {
          res.status(500).json({ message: error })
     }
