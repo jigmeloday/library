@@ -1,13 +1,15 @@
 import { Box, Grid } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { getHomeCategory, selectHomeItem } from '../../services/states/shared-state/shared.slice';
 import { Typography } from '../../shared/components/typography/typography.component';
 import { BookCard } from '../book/components/book-card.component';
 
 export function Home() {
     const dispatch = useDispatch();
-    const categoryList = useSelector(selectHomeItem)
+    const categoryList = useSelector(selectHomeItem);
+    const nav = useNavigate();
     useEffect(() => {
         dispatch(getHomeCategory() as keyof unknown)
     }, []);
@@ -17,7 +19,9 @@ export function Home() {
             {
                 categoryList?.books?.map((items: any) =>
                         <Grid item container key={items?._id} p='20px'>
-                           <Typography label= {items?.name} variant='body1' fontWeight='bold' className='cursor--pointer' />
+                           <Typography label= {items?.name} variant='body1' fontWeight='bold'
+                                       click={() => nav(`/categories/${items._id}`)}
+                                       className='cursor--pointer' />
                             <Grid item container direction='row'>
                                 {
                                    items.books.length ?
