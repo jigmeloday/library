@@ -1,6 +1,6 @@
 import { APIResponse } from '../../shared/models/shared.model';
 import { serialize } from 'object-to-formdata';
-import { createBookAPI, deleteBookAPI, editBookAPI, getBookAPI, getBooksAPI, readBookAPI } from '../api-services/book-api';
+import { createBookAPI, deleteBookAPI, editBookAPI, getBookAPI, getBooksAPI, getReaderAPI, readBookAPI } from '../api-services/book-api';
 import { Book, GetBooks } from '../model/book.model';
 
 export class BookFacade {
@@ -21,5 +21,8 @@ export class BookFacade {
     }
     static readBook(id: any) {
         return readBookAPI(serialize(id));
+    }
+    static getReader() {
+        return getReaderAPI();
     }
 }
