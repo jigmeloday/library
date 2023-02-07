@@ -9,6 +9,7 @@ const author = require('./src/routes/authors');
 const user = require('./src/routes/user');
 const profile = require('./src/routes/profiles');
 const category = require('./src/routes/categories');
+const reader = require('./src/routes/reader');
 
 //Logger
 app.use(log('dev'));
@@ -46,6 +47,7 @@ app.use('/books', book);
 app.use('/user', user);
 app.use('/profile', profile);
 app.use('/category', category);
+app.use('/reader', reader);
 
 //error handler
 app.use((req, res, next) =>{
