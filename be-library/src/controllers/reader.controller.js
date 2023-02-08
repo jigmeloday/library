@@ -33,7 +33,7 @@ exports.get_reader = async (req, res, next) => {
                 user: await Profile.findOne({ uid: items?.reader })
             })
         }
-        res.status(200).json({message: readerArray});
+        res.status(200).json(readerArray);
     } catch (error) {
         res.status(500).json({message: error});
     }
