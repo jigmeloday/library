@@ -1,5 +1,11 @@
+import { Box, Grid } from '@mui/material';
 import { useState, useEffect } from 'react';
+import { theme } from '../../../assest/theme';
+import { ProfileContainer } from '../../components/profile-image/profile-image.style';
 import { BookFacade } from '../../services/facade-service/book-facade';
+import { Typography } from '../../shared/components/typography/typography.component';
+import { BookCover } from '../../shared/utils/shared.utils';
+import { ReaderCard } from './reader-card';
 
 export function AuthorListing() {
     const [reader, setReader] = useState<any>();
@@ -8,9 +14,37 @@ export function AuthorListing() {
             setReader(res?.data);
         })
     }, []);
-    console.log(reader)
     return(
-        <>author</>
+        <Grid container item direction='row' py='34px' px='32px'>
+            {
+                reader?.map((items: any, index: number) =>
+                    <ReaderCard key={`${items?._id}+${index}`}>
+                        <Grid item container direction='row' alignItems='center' xs={12} >
+                            <ProfileContainer
+                                xs={2}
+                                borderRadius={50}
+                                border={`4px solid
+                                ${theme('light').palette.grey.A100}`}
+                                width='60px' height='60px'
+                                className='cursor--pointer'
+                            >
+                                <img src='../../../../images/reading-glasses-animate.svg' width='100%' height='100%' className='object-fit--cover' />
+                            </ProfileContainer>
+                            <Box  px='12px'>
+                                <Typography label={items?.user?.email} />
+                                <Typography label={items?.book?.title} />
+                                <Typography label={items?.book?.author} />
+                            </Box>
+                        </Grid>
+                        <Grid item container pt='12px'>
+                            {/*<Typography label={items?.book?.summary} />*/}
+                            <img src={ items?.book?.coverImage ? `http://localhost:3000/${ items?.book?.coverImage }` : BookCover }
+                                 width='100%' height='100%' className='object-fit--cover'/>
+                        </Grid>
+                    </ReaderCard>
+                )
+            }
+        </Grid>
     )
 }
 
