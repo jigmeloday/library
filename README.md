@@ -28,13 +28,6 @@ Run the following commands on repo root for FE
 Run the following commands on repo root for BE
 > _npm run devStart_
 
-## Building
-
-
-> _yarn nx build_
-
-
-
 ### Branching Guide
 In a Monorepo, it becomes necessary to have some pattern to name your branches, as to add meaning to the PRs that are created.
 
