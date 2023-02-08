@@ -1,5 +1,6 @@
 import { Box, Grid } from '@mui/material';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { theme } from '../../../assest/theme';
 import { ProfileContainer } from '../../components/profile-image/profile-image.style';
 import { BookFacade } from '../../services/facade-service/book-facade';
@@ -9,6 +10,7 @@ import { ReaderCard } from './reader-card';
 
 export function AuthorListing() {
     const [reader, setReader] = useState<any>();
+    const nav = useNavigate();
     useEffect(() => {
         BookFacade.getReader().then((res) => {
             setReader(res?.data);
@@ -37,9 +39,11 @@ export function AuthorListing() {
                             </Box>
                         </Grid>
                         <Grid item container pt='12px'>
-                            {/*<Typography label={items?.book?.summary} />*/}
-                            <img src={ items?.book?.coverImage ? `http://localhost:3000/${ items?.book?.coverImage }` : BookCover }
-                                 width='100%' height='100%' className='object-fit--cover'/>
+                            <Typography label={`${items?.book?.summary.substring(0, 100)|| 'Summary not available'}...`} />
+                            <Box className='cursor--pointer' py='12px' onClick={() => nav(`/books/${items.book._id}`)}>
+                                <img src={ items?.book?.coverImage ? `http://localhost:3000/${ items?.book?.coverImage }` : BookCover }
+                                     width='100%' height='100%' className='object-fit--cover'/>
+                            </Box>
                         </Grid>
                     </ReaderCard>
                 )
