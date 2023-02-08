@@ -7,9 +7,7 @@
 [//]: # (#)
 ### Hi,
 this is online library app. I made this app to learn nodejs with React ts. For now
-this app is mainly for showing books, sharing books, posting book, creating user, searching prefect book to read and
-also to get daily updates on what's going on.
-
+this app is mainly for showing books, sharing books, posting book, creating user, searching prefect book to read.
 ***
 
 ## Setting up development environment
