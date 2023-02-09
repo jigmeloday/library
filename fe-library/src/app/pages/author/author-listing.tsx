@@ -20,9 +20,10 @@ export function AuthorListing() {
         <Grid container item direction='row' py='34px' px='32px'>
             {
                 reader?.map((items: any, index: number) =>
-                    <ReaderCard key={`${items?._id}+${index}`}>
+                    <ReaderCard item key={`${items?._id}+${index}`}>
                         <Grid item container direction='row' alignItems='center' xs={12} >
                             <ProfileContainer
+                                item
                                 xs={2}
                                 borderRadius={50}
                                 border={`4px solid
