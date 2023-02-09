@@ -14,8 +14,8 @@ export function BookCard(props:{ items: Book }) {
     return(
         <Card>
             <Grid item container justifyContent='center'>
-                <ProfileContainer height='400px' >
-                    <img src={props?.items?.coverImage? `http://localhost:3000/${props?.items?.coverImage}` : BookCover} width='100%' height='100%'   className='object-fit--cover'/>
+                <ProfileContainer height='400px' onClick={() => nav(`/books/${props.items._id}`)} >
+                    <img src={props?.items?.coverImage? `http://localhost:3000/${props?.items?.coverImage}` : BookCover} width='100%' height='100%'   className='object-fit--cover cursor--pointer'/>
                 </ProfileContainer>
             </Grid>
             {/*couldn't decide which to use*/}
@@ -34,9 +34,9 @@ export function BookCard(props:{ items: Book }) {
                     {/*<Rating name="read-only" value={4} readOnly />*/}
                 </Grid>
             </CardContent>
-            <Grid item container justifyContent='center' pb='20px'>
-                <Button click={() => nav(`/books/${props.items._id}`)} variant='outlined' label='View More' />
-            </Grid>
+            {/*<Grid item container justifyContent='center' pb='20px'>*/}
+            {/*    <Button click={() => nav(`/books/${props.items._id}`)} variant='outlined' label='View More' />*/}
+            {/*</Grid>*/}
         </Card>
     )
 }
