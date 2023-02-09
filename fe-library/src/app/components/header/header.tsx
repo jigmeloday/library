@@ -40,7 +40,7 @@ export function HeaderComponent() {
                              {
                                  NAVIGATION.map(({ id, path, label }) =>
                                      <Grid item key={`${id}+${path}`} className='cursor--pointer'>
-                                     <Typography label={label}
+                                     <Typography label={!token && label === 'READER' ? '': label}
                                                  color={ url === path ?
                                                      theme('light').palette.primary.main :
                                                      theme('light').palette.black.main}
