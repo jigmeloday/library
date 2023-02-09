@@ -18,9 +18,6 @@ export function HeaderMenu() {
             <MenuItem onClick={() => nav('/profile')} >
                 <Avatar /> Profile
             </MenuItem>
-            <MenuItem >
-                <Avatar /> My account
-            </MenuItem>
             <Divider />
             <MenuItem >
                 <ListItemIcon>
