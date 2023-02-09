@@ -15,7 +15,7 @@ export function HeaderMenu() {
     }
     return(
         <>
-            <MenuItem onClick={() =>} >
+            <MenuItem onClick={() => nav('/profile')} >
                 <Avatar /> Profile
             </MenuItem>
             <MenuItem >
