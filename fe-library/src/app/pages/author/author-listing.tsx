@@ -47,7 +47,7 @@ export function AuthorListing() {
                                      width='100%' height='100%' className='object-fit--cover'/>
                             </Box>
                         </Grid>
-                        <Grid item container direction='row'>
+                        <Grid item container direction='row' justifyContent='space-around'>
                             <Button label='Accept'/>
                             <Button label='Recject'/>
                         </Grid>
