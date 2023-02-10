@@ -46,6 +46,9 @@ export function AuthorListing() {
                                      width='100%' height='100%' className='object-fit--cover'/>
                             </Box>
                         </Grid>
+                        <Grid item container>
+                            hello
+                        </Grid>
                     </ReaderCard>
                 )
             }
