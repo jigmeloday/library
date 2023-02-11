@@ -11,7 +11,8 @@ exports.reader_request = async (req, res, next) => {
         const reader = new Reader({
             _id: new mongoose.Types.ObjectId(),
             reader: readerID,
-            book: req.body.id
+            book: req.body.id,
+            verify: false,
         });
         reader.save().then(() => {
             res.status(201).json({message: 'Requested'});
@@ -38,4 +39,3 @@ exports.get_reader = async (req, res, next) => {
         res.status(500).json({message: error});
     }
 };
-
