@@ -39,3 +39,10 @@ exports.get_reader = async (req, res, next) => {
         res.status(500).json({message: error});
     }
 };
+
+exports.get_my_request = async () => {
+    try{
+        const requestedBook = await Reader.find();
+
+    }
+}
