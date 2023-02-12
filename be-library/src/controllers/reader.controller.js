@@ -11,7 +11,8 @@ exports.reader_request = async (req, res, next) => {
         const reader = new Reader({
             _id: new mongoose.Types.ObjectId(),
             reader: readerID,
-            book: req.body.id
+            book: req.body.id,
+            verify: false,
         });
         reader.save().then(() => {
             res.status(201).json({message: 'Requested'});
@@ -39,3 +40,18 @@ exports.get_reader = async (req, res, next) => {
     }
 };
 
+exports.get_my_request = async () => {
+    try{
+        const requestedBook = await Reader.find();
+        const bookArray = [];
+        for( const book of requestedBook) {
+            readerArray.push({
+                book: await Book.findOne({ _id: items?.book })
+            })
+        }
+        res.status(200).json(bookArray.reverse());
+    } catch (error) {
+        res.status(500).json({ message: error });
+
+    }
+}
