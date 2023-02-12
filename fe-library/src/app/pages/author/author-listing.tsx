@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { theme } from '../../../assest/theme';
 import { ProfileContainer } from '../../components/profile-image/profile-image.style';
 import { BookFacade } from '../../services/facade-service/book-facade';
+import { Button } from '../../shared/components/button/button.component';
 import { Typography } from '../../shared/components/typography/typography.component';
 import { BookCover } from '../../shared/utils/shared.utils';
 import { ReaderCard } from './reader-card';
@@ -45,6 +46,10 @@ export function AuthorListing() {
                                 <img src={ items?.book?.coverImage ? `http://localhost:3000/${ items?.book?.coverImage }` : BookCover }
                                      width='100%' height='100%' className='object-fit--cover'/>
                             </Box>
+                        </Grid>
+                        <Grid item container direction='row' justifyContent='space-around'>
+                            <Button label='Accept' variant='outlined'/>
+                            <Button label='Recject' variant='contained'/>
                         </Grid>
                     </ReaderCard>
                 )
