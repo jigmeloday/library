@@ -1,4 +1,4 @@
-import { fetchCategoryAPI, fetchCategoryByIDAPI } from "../api-services/shared-api";
+import { fetchCategoryAPI, fetchCategoryByIDAPI, fetchHomeCategoryAPI } from '../api-services/shared-api';
 
 export class SharedFacade {
     static fetchCategory() {
@@ -6,5 +6,8 @@ export class SharedFacade {
     }
     static fetchCategoryByID(id: string) {
         return fetchCategoryByIDAPI(id)
+    }
+    static fetchHomeCategory() {
+        return fetchHomeCategoryAPI();
     }
 }

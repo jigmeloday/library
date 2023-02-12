@@ -35,11 +35,7 @@ export function CoreRoute() {
             component: <CategoryRoute/>,
             route: '/categories/*'
         },
-        {
-            id: '4',
-            component: <Author/>,
-            route: '/authors/*'
-        },
+
         {
             id: '5',
             component: <AuthRoute/>,

@@ -31,6 +31,11 @@ export function BookListing() {
             ( res ) => setBook( res?.data )
         )
     }, [] );
+    const readBook = (id: string) => {
+        BookFacade.readBook({ id }).then((res) => {
+            console.log(res)
+        })
+    }
     return (
         <Grid container item p='24px'>
             <Grid item container direction='column'>
@@ -59,7 +64,7 @@ export function BookListing() {
                                     <Box px='12px'>
                                         <Button label='Edit' click={ editBook }/>
                                     </Box>
-                                </> : <Button label='READ'/>
+                                </> : <Button label='READ' click={() => readBook(book?.book?._id) }/>
                             }
                         </Grid>
                     </Grid>
