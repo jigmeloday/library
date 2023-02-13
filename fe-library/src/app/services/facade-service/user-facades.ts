@@ -1,13 +1,8 @@
-import { fetchCategoryAPI, fetchCategoryByIDAPI, fetchHomeCategoryAPI } from '../api-services/shared-api';
+import {  } from '../api-services/shared-api';
 
-export class SharedFacade {
-    static fetchCategory() {
-        return fetchCategoryAPI();
+export class ProfileFacade {
+    static fetchProfie() {
+        
     }
-    static fetchCategoryByID(id: string) {
-        return fetchCategoryByIDAPI(id)
-    }
-    static fetchHomeCategory() {
-        return fetchHomeCategoryAPI();
-    }
+    
 }
