@@ -80,7 +80,7 @@ export function CoreRoute() {
         },
         {
             id: '7',
-            component: <Reader />,
+            component: <Reader/>,
             route: '/user/:id'
         }
     ]
