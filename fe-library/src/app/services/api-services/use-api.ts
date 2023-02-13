@@ -1,5 +1,5 @@
 import { FetchAPI } from "./base-api"
 
-export const fetchProfileAPI = () => {
-    return FetchAPI('', 'GET');
+export const fetchProfileAPI = (id:string) => {
+    return FetchAPI(`profile/${id}`, 'GET');
 }
