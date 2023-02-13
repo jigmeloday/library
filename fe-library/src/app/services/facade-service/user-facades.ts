@@ -1,8 +1,8 @@
-import {  } from '../api-services/shared-api';
+import { fetchProfileAPI } from '../api-services/use-api';
 
 export class ProfileFacade {
-    static fetchProfie() {
-        
+    static fetchProfie(id: string) {
+        return fetchProfileAPI(id);
     }
     
 }
