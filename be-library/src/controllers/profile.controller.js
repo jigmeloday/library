@@ -26,3 +26,13 @@ exports.update_profile = (req, res, next) => {
         })
         .catch((error) => res.status(500).json({message:error }))
 }
+
+exports.get_other_profile = async (req, res, next) => {
+    try{
+        const id = req.param.id;
+        const profile = await Profile.find({ uid: id });
+        res.status(200).json(profile)
+    } catch (error) {
+        res.status(500).json({message:error })
+    }
+}
