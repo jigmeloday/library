@@ -1,7 +1,7 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route} from 'react-router-dom';
 import { RouteModel } from '../../shared/models/shared.model';
-
+const Profile = lazy(() => import('../../pages/profile/profile'))
 const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
 
 export function UserRoute() {
@@ -9,7 +9,7 @@ export function UserRoute() {
     const AUTHENTICATED: RouteModel[] =[
         {
             id: '1',
-            component: <>Profile</>,
+            component: <Profile/>,
             route: '/'
         }
     ];
