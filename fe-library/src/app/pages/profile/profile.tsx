@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 
 export function Profile() {
     return(
-       <Grid container item alignItems='center' justifyContent='center'>
+       <Grid container item justifyContent='center'>
            jj
        </Grid>
     )
