@@ -26,6 +26,7 @@ export function AuthorListing() {
                             <ProfileContainer
                                 item
                                 xs={2}
+                                onClick={() => nav(`/user/${items?.user.uid}`)}
                                 borderRadius={50}
                                 border={`4px solid
                                 ${theme('light').palette.grey.A100}`}

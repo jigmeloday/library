@@ -15,7 +15,7 @@ const Header = lazy( () => import('../../components/header/header') );
 const Landing = lazy( () => import('../../pages/home/home') );
 const Footer = lazy(() => import('../../components/footer/footer.component'));
 const PageNotFound = lazy(() => import('../../components/page-not-found/page-not-found'));
-
+const Reader = lazy(() => import('../../pages/author/author-details'));
 export function CoreRoute() {
     const url = useLocation().pathname;
     const isAuthenticated = useSelector(selectToken);
@@ -48,7 +48,7 @@ export function CoreRoute() {
         },
         {
             id: '7',
-            component: <>User</>,
+            component: <Reader/>,
             route: '/user/:id'
         }
     ];
@@ -80,7 +80,7 @@ export function CoreRoute() {
         },
         {
             id: '7',
-            component: <>User</>,
+            component: <Reader/>,
             route: '/user/:id'
         }
     ]
