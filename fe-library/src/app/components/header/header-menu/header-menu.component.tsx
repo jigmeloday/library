@@ -2,22 +2,21 @@ import { Logout, PersonAdd, Settings } from '@mui/icons-material';
 import { Avatar, Divider, ListItemIcon, MenuItem } from '@mui/material';
 import { memo } from 'react'
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import storage from 'redux-persist/es/storage';
 import { clearToken } from '../../../services/states/credential-state/credential.action';
 
 export function HeaderMenu() {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const nav = useNavigate();
     const logOut = () => {
         localStorage.clear();
         dispatch(clearToken())
     }
     return(
         <>
-            <MenuItem >
+            <MenuItem onClick={() => nav('/profile')} >
                 <Avatar /> Profile
-            </MenuItem>
-            <MenuItem >
-                <Avatar /> My account
             </MenuItem>
             <Divider />
             <MenuItem >
