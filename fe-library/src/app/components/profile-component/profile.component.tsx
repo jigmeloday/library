@@ -6,7 +6,7 @@ import { ProfileContainer } from '../profile-image/profile-image.style';
 export function ProfileComponent(props: any) {
 
     return(
-       <Grid container item px='38px' py='32px'>
+       <Grid container item px='38px' py='32px' >
            <Grid item container justifyContent='center'>
                <ProfileContainer
                    item
@@ -18,8 +18,8 @@ export function ProfileComponent(props: any) {
                    height='190px'>
                    <img src='../../../../images/reading-glasses-animate.svg' width='100%' height='100%' className='object-fit--cover'/>
                </ProfileContainer>
-               <Grid item container>
-                   
+               <Grid item container justifyContent='center' py='32px'>
+                   kk
                </Grid>
            </Grid>
        </Grid>
