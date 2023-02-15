@@ -11,7 +11,8 @@ export function Profile() {
         ProfileFacade.fetchProfile().then((resp: any) => {
             setProfile(resp.data);
         })
-    }, [])
+    }, []);
+
     return(
        <Grid container item>
            <Grid item container direction='column' py='24px' px='36px'>
