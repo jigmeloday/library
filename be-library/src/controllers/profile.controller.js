@@ -12,7 +12,7 @@ exports.get_profile = (req, res, next) => {
     // }).catch((error) => res.status(500).json({message: error}))
     try{
         const token = req.headers.authorization.split(" ")[1];
-        const creatorId = jwt.verify(token, process.env.JWT_KEY).id;
+        const uid = jwt.verify(token, process.env.JWT_KEY).id;
 
     } catch (error) {
         res.status(500).json({ message: error })
