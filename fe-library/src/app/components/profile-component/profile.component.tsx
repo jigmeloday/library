@@ -27,8 +27,10 @@ export function ProfileComponent(props: any) {
                    <Grid item container>
                        {
                            PROFILE_CONSTANT.map((items: any) =>
-                            <Grid item container direction='row' key={`${items.id}+${items.label}`}>
-                                <Typography variant='body1' label={`${items.label}: `} />
+                            <Grid item container direction='row' key={`${items.id}+${items.label}`} py='12px'>
+                                <Box pr='4px'>
+                                    <Typography variant='body1' label={`${items.label}: `} fontWeight='bold' />
+                                </Box>
                                 <Typography variant='body1' label={` ${props?.data?.[items.value]}`} />
                             </Grid>
                            )
