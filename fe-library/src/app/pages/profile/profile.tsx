@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { ProfileComponent } from '../../components/profile-component/profile.component';
 import { ProfileFacade } from '../../services/facade-service/user-facades';
 import { Button } from '../../shared/components/button/button.component';
+import { SharedModule } from '../../shared/components/module/shared.module';
 
 export function Profile() {
 
@@ -33,7 +34,9 @@ export function Profile() {
                {/*</Grid>*/}
            </Grid>
            {
-               edit && <>hello</>
+               edit && <SharedModule title='Edit Profile' isOpen={edit}>
+
+               </SharedModule>
            }
        </Grid>
     )
