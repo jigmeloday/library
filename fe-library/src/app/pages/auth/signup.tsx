@@ -51,13 +51,13 @@ export function SignUp() {
                                     </Box>
                                     <Box py='12px'>
                                         <Input
-                                            name='email'
+                                            name='username'
                                             onChange={ handleChange }
                                             value={ values.username }
                                             onBlur={ handleBlur }
                                             error={!!(touched.username && errors.username)}
                                             helperText={touched.username && errors.username ? errors.username : ''}
-                                            label='Email'/>
+                                            label='Username'/>
 
                                     </Box>
                                     <Box py='12px'>
