@@ -1,10 +1,12 @@
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { memo } from 'react';
 import { theme } from '../../../assest/theme';
+import { PROFILE_CONSTANT } from '../../pages/profile/profile.constant';
+import { Typography } from '../../shared/components/typography/typography.component';
 import { ProfileContainer } from '../profile-image/profile-image.style';
 
 export function ProfileComponent(props: any) {
-    console.log(props)
+
     return(
        <Grid container item px='38px' py='32px' >
            <Grid item container justifyContent='center'>
@@ -23,7 +25,14 @@ export function ProfileComponent(props: any) {
                </Grid>
                <Grid item container justifyContent='center' xs={8}>
                    <Grid item container>
-                       hello
+                       {
+                           PROFILE_CONSTANT.map((items: any) =>
+                            <Grid item container direction='row' key={`${items.id}+${items.label}`}>
+                                <Typography variant='body1' label={`${items.label}: `} />
+                                <Typography variant='body1' label={` ${props?.data?.[items.value]}`} />
+                            </Grid>
+                           )
+                       }
                    </Grid>
                </Grid>
            </Grid>
