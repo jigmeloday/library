@@ -15,7 +15,7 @@ export function AuthorDetails() {
     return(
         <Grid container item>
             <Grid item container direction='column' py='24px' px='36px'>
-                <ProfileComponent />
+                <ProfileComponent data={user} />
             </Grid>
         </Grid>
     )

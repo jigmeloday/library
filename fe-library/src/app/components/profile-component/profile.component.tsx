@@ -4,7 +4,7 @@ import { theme } from '../../../assest/theme';
 import { ProfileContainer } from '../profile-image/profile-image.style';
 
 export function ProfileComponent(props: any) {
-
+    console.log(props)
     return(
        <Grid container item px='38px' py='32px' >
            <Grid item container justifyContent='center'>

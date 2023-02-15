@@ -16,7 +16,7 @@ export function Profile() {
     return(
        <Grid container item>
            <Grid item container direction='column' py='24px' px='36px'>
-               <ProfileComponent />
+               <ProfileComponent data={profile} />
                <Grid item container direction='row' px='36px'>
                    <Grid>
                        hello
