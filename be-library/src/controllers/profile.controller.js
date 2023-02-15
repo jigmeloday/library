@@ -28,6 +28,7 @@ exports.update_profile = (req, res, next) => {
 }
 
 exports.get_other_profile = async (req, res, next) => {
+    console.log(req.params.id)
     try{
         const id = req.param.id;
         const profile = await Profile.find({ uid: id });
