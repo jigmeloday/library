@@ -21,7 +21,7 @@ export function ProfileComponent(props: any) {
                    <img src='../../../../images/reading-glasses-animate.svg' width='100%' height='100%' className='object-fit--cover'/>
                </ProfileContainer>
                <Grid item container justifyContent='center' py='32px'>
-                   kk
+                   <Typography label={props?.data?.username?.toUpperCase() || 'username'} variant='body1' fontSize={18} fontWeight='500' />
                </Grid>
                <Grid item container justifyContent='center' xs={8}>
                    <Grid item container>
