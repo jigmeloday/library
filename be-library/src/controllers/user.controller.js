@@ -49,7 +49,7 @@ exports.user_signup = (req, res, next) => {
                             _id: new mongoose.Types.ObjectId(),
                             email: req.body.email,
                             uid: resp.id,
-                            username: '',
+                            username: req.body.username,
                             firstName: '',
                             lastName: '',
                             phone: '',
