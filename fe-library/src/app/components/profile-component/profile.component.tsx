@@ -21,6 +21,11 @@ export function ProfileComponent(props: any) {
                <Grid item container justifyContent='center' py='32px'>
                    kk
                </Grid>
+               <Grid item container justifyContent='center' xs={8}>
+                   <Grid item container>
+                       hello
+                   </Grid>
+               </Grid>
            </Grid>
        </Grid>
     )
