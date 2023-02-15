@@ -8,7 +8,7 @@ export function AuthorDetails() {
     const [user, setUser] = useState<any>();
     const id = useParams()['id'];
     useEffect(() => {
-        ProfileFacade.fetchProfie(id as string).then((resp) => {
+        ProfileFacade.fetchProfile(id as string).then((resp) => {
             setUser(resp?.data)
         })
     }, [])
