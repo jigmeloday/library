@@ -12,16 +12,16 @@ export function EditProfile( props: any ) {
             name: 'username'
         },
         {
-            id: '1',
-            label: 'Username',
-            name: 'username'
+            id: '2',
+            label: 'First Name',
+            name: 'firstName'
         },
         {
-            id: '1',
-            label: 'Username',
-            name: 'username'
+            id: '3',
+            label: 'Last Name',
+            name: 'lastName'
         }, {
-            id: '1',
+            id: '4',
             label: 'Username',
             name: 'username'
         }
