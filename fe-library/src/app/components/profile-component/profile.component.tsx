@@ -1,6 +1,8 @@
-import { Grid } from '@mui/material';
+import { Box, Grid } from '@mui/material';
 import { memo } from 'react';
 import { theme } from '../../../assest/theme';
+import { PROFILE_CONSTANT } from '../../pages/profile/profile.constant';
+import { Typography } from '../../shared/components/typography/typography.component';
 import { ProfileContainer } from '../profile-image/profile-image.style';
 
 export function ProfileComponent(props: any) {
@@ -19,7 +21,21 @@ export function ProfileComponent(props: any) {
                    <img src='../../../../images/reading-glasses-animate.svg' width='100%' height='100%' className='object-fit--cover'/>
                </ProfileContainer>
                <Grid item container justifyContent='center' py='32px'>
-                   kk
+                   <Typography label={props?.data?.username?.toUpperCase() || 'username'} variant='body1' fontSize={18} fontWeight='500' />
+               </Grid>
+               <Grid item container justifyContent='center' xs={8}>
+                   <Grid item container>
+                       {
+                           PROFILE_CONSTANT.map((items: any) =>
+                            <Grid item container direction='row' key={`${items.id}+${items.label}`} py='12px'>
+                                <Box pr='4px'>
+                                    <Typography variant='body1' label={`${items.label}: `} fontWeight='bold' />
+                                </Box>
+                                <Typography variant='body1' label={` ${props?.data?.[items.value]}`} />
+                            </Grid>
+                           )
+                       }
+                   </Grid>
                </Grid>
            </Grid>
        </Grid>
