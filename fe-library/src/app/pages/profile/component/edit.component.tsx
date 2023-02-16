@@ -15,7 +15,7 @@ export function EditProfile(props: any) {
                     <Grid item container>
                         hello
 
-                        <Button click={() => console.log('')} />
+                        <Button click={() => props.handleClick()} />
                     </Grid>
                 }
             </Formik>

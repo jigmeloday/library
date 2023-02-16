@@ -5,6 +5,7 @@ import { ProfileComponent } from '../../components/profile-component/profile.com
 import { ProfileFacade } from '../../services/facade-service/user-facades';
 import { Button } from '../../shared/components/button/button.component';
 import { SharedModule } from '../../shared/components/module/shared.module';
+import { EditProfile } from './component/edit.component';
 
 export function Profile() {
 
@@ -35,7 +36,7 @@ export function Profile() {
            </Grid>
            {
                edit && <SharedModule title='Edit Profile' isOpen={edit}>
-
+               <EditProfile handleClick={onEdit} />
                </SharedModule>
            }
        </Grid>
