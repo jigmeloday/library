@@ -10,12 +10,16 @@ import { FORM } from '../constant/profile.constant';
 export function EditProfile( props: any ) {
     const dispatch = useDispatch();
     const profile = useSelector(selectCurrentUser);
-    console.log(profile)
     return (
         <Grid container item py='12px'>
             <Formik
                 initialValues={ { userName: profile?.name || '', firstName: profile?.firstName || '', lastName: profile?.lastName || '' } }
-                onSubmit={ (values) => console.log( values ) }
+                onSubmit={ (values) => {
+                    const payload = {
+                        data: values,
+                        id: profile.uid
+                    }
+                } }
             >
                 { ( { handleSubmit, handleChange, values } ) =>
                     <Grid item container direction='column'>
