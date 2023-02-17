@@ -1,17 +1,20 @@
 import { Box, Grid } from '@mui/material';
 import { Formik } from 'formik';
 import { memo } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../../services/states/credential-state/credential.slice';
 import { Button } from '../../../shared/components/button/button.component';
 import { Input } from '../../../shared/components/input/input.component';
 import { FORM } from '../constant/profile.constant';
 
 export function EditProfile( props: any ) {
     const dispatch = useDispatch();
+    const profile = useSelector(selectCurrentUser);
+    console.log(profile)
     return (
         <Grid container item py='12px'>
             <Formik
-                initialValues={ { userName: '', firstName: '', lastName: '' } }
+                initialValues={ { userName: profile?.name || '', firstName: profile?.firstName || '', lastName: profile?.lastName || '' } }
                 onSubmit={ (values) => console.log( values ) }
             >
                 { ( { handleSubmit, handleChange, values } ) =>

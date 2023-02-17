@@ -25,6 +25,19 @@ export const userLogin = createAsyncThunk(
             return thunkAPI.rejectWithValue( error.errors );
         }
     }
+);
+
+export const updateUser = createAsyncThunk(
+    'credential/updateUser',
+    async ( payload: any, thunkAPI ) => {
+        const {data, error } = await AuthFacade.login(payload);
+        if ( data ) {
+
+        }
+        if ( error ) {
+            return thunkAPI.rejectWithValue( error.errors );
+        }
+    }
 )
 
 export const CREDENTIAL_STATE = createSlice({
@@ -37,6 +50,9 @@ export const CREDENTIAL_STATE = createSlice({
                 localStorage.setItem('token', action.payload.token);
                 state.currentToken = action.payload.token;
                 state.currentUser = action.payload.profile
+            })
+            .addCase(updateUser.fulfilled, (state, action) => {
+                state.currentUser = action.payload
             })
             .addCase(clearToken, (state, action) => {
                 state.currentToken = ''
