@@ -2,7 +2,7 @@ export const FORM = [
     {
         id: '1',
         label: 'Username',
-        name: 'userName'
+        name: 'username'
     },
     {
         id: '2',

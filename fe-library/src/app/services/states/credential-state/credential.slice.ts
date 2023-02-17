@@ -32,7 +32,7 @@ export const updateUser = createAsyncThunk(
     async ( payload: any, thunkAPI ) => {
         const {data, error } = await AuthFacade.updateUser(payload.data, payload?.id);
         if ( data ) {
-
+            return data;
         }
         if ( error ) {
             return thunkAPI.rejectWithValue( error.errors );

@@ -9,5 +9,5 @@ export const userCreation = (data: FormData) => {
 }
 
 export const updateUserAPI = (data: FormData, id: string) => {
-    return FetchAPI(`profile/${id}`, 'POST', { body: data })
+    return FetchAPI(`profile/${id}`, 'PATCH', { body: data })
 }

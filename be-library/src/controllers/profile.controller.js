@@ -16,7 +16,7 @@ exports.update_profile = (req, res, next) => {
     const id = req.params.id;
     const updateVal = req.body;
 
-    Profile.updateOne({ _id: id }, updateVal )
+    Profile.updateOne({ uid: id }, { $set: updateVal } )
         .exec()
         .then((resp) =>{
             if (resp) {
