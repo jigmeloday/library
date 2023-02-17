@@ -3,46 +3,35 @@ import { Formik } from 'formik';
 import { memo } from 'react';
 import { Button } from '../../../shared/components/button/button.component';
 import { Input } from '../../../shared/components/input/input.component';
+import { FORM } from '../constant/profile.constant';
 
 export function EditProfile( props: any ) {
-    const FORM = [
-        {
-            id: '1',
-            label: 'Username',
-            name: 'username'
-        },
-        {
-            id: '2',
-            label: 'First Name',
-            name: 'firstName'
-        },
-        {
-            id: '3',
-            label: 'Last Name',
-            name: 'lastName'
-        }, {
-            id: '4',
-            label: 'Username',
-            name: 'username'
-        }
-    ]
+
     return (
         <Grid container item py='12px'>
             <Formik
-                initialValues={ { firstName: '', lastName: '' } }
-                onSubmit={ () => console.log( '' ) }
+                initialValues={ { userName: '', firstName: '', lastName: '' } }
+                onSubmit={ (values) => console.log( values ) }
             >
-                { ( { handleSubmit, handleChange } ) =>
+                { ( { handleSubmit, handleChange, values } ) =>
                     <Grid item container direction='column'>
-                        <Box py='24px'>
+                        <Grid item container py='24px'>
                             {
                                 FORM.map( ( item ) =>
-                                    <Box py='8px'>
-                                        <Input label={ item?.label }/>
-                                    </Box> )
+                                    <Grid key={item.id} item container xs={ item.name==='firstName' || item.name === 'lastName' ? 6: 12 } px='4px' py='8px'>
+                                        <Input
+                                            label={ item?.label }
+                                            name={item.name}
+                                            onChange={handleChange}
+                                            value={values[item.name as keyof unknown]}
+                                        />
+                                    </Grid> )
                             }
-                        </Box>
-                        <Button label='Cancel' click={ () => props.handleClick() }/>
+                        </Grid>
+                        <Grid item container direction='row' gap='14px' justifyContent='end'>
+                            <Button label='Save' variant='contained' click={handleSubmit}/>
+                            <Button label='Cancel' variant='outlined' click={ () => props.handleClick() }/>
+                        </Grid>
                     </Grid>
                 }
             </Formik>
