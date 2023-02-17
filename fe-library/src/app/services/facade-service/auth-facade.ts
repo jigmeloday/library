@@ -1,5 +1,5 @@
 import { serialize } from "object-to-formdata";
-import { userCreation, userLogin } from "../api-services/auth-api";
+import { updateUserAPI, userCreation, userLogin } from "../api-services/auth-api";
 
 export class AuthFacade {
     static login(data: { email: string, password: string }): Promise<any> {
@@ -7,5 +7,8 @@ export class AuthFacade {
     }
     static signUp(data: { email: string, password: string, username: string }): Promise<any> {
         return userCreation(serialize(data))
+    }
+    static updateUser( data: any ) {
+        return updateUserAPI(serialize(data));
     }
 }
