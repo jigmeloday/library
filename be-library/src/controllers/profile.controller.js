@@ -20,7 +20,7 @@ exports.update_profile = (req, res, next) => {
         .exec()
         .then((resp) =>{
             if (resp) {
-                res.status(201).json({profile: resp})
+                res.status(201).json(resp)
             }else{
                 res.status(400).json({error: 'not working'})
             }

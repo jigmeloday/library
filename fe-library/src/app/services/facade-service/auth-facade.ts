@@ -8,7 +8,7 @@ export class AuthFacade {
     static signUp(data: { email: string, password: string, username: string }): Promise<any> {
         return userCreation(serialize(data))
     }
-    static updateUser( data: any ) {
-        return updateUserAPI(serialize(data));
+    static updateUser( data: any, id: string ) {
+        return updateUserAPI(serialize(data), id);
     }
 }

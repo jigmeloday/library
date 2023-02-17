@@ -30,7 +30,7 @@ export const userLogin = createAsyncThunk(
 export const updateUser = createAsyncThunk(
     'credential/updateUser',
     async ( payload: any, thunkAPI ) => {
-        const {data, error } = await AuthFacade.login(payload);
+        const {data, error } = await AuthFacade.updateUser(payload.data, payload?.id);
         if ( data ) {
 
         }

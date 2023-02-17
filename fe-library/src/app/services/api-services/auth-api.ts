@@ -8,6 +8,6 @@ export const userCreation = (data: FormData) => {
     return FetchAPI('user/signup', 'POST', { body: data })
 }
 
-export const updateUserAPI = (data: FormData) => {
-    return FetchAPI('user/signup', 'POST', { body: data })
+export const updateUserAPI = (data: FormData, id: string) => {
+    return FetchAPI(`profile/${id}`, 'POST', { body: data })
 }
