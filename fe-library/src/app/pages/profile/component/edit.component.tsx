@@ -2,7 +2,7 @@ import { Box, Grid } from '@mui/material';
 import { Formik } from 'formik';
 import { memo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../../services/states/credential-state/credential.slice';
+import { selectCurrentUser, updateUser } from '../../../services/states/credential-state/credential.slice';
 import { Button } from '../../../shared/components/button/button.component';
 import { Input } from '../../../shared/components/input/input.component';
 import { FORM } from '../constant/profile.constant';
@@ -19,6 +19,7 @@ export function EditProfile( props: any ) {
                         data: values,
                         id: profile.uid
                     }
+                    dispatch(updateUser(payload) as keyof unknown);
                 } }
             >
                 { ( { handleSubmit, handleChange, values } ) =>
