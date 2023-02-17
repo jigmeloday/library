@@ -1,12 +1,13 @@
 import { Box, Grid } from '@mui/material';
 import { Formik } from 'formik';
 import { memo } from 'react';
+import { useDispatch } from 'react-redux';
 import { Button } from '../../../shared/components/button/button.component';
 import { Input } from '../../../shared/components/input/input.component';
 import { FORM } from '../constant/profile.constant';
 
 export function EditProfile( props: any ) {
-
+    const dispatch = useDispatch();
     return (
         <Grid container item py='12px'>
             <Formik
