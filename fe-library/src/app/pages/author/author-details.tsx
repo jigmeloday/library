@@ -8,14 +8,14 @@ export function AuthorDetails() {
     const [user, setUser] = useState<any>();
     const id = useParams()['id'];
     useEffect(() => {
-        ProfileFacade.fetchProfie(id as string).then((resp) => {
+        ProfileFacade.fetchProfile(id as string).then((resp) => {
             setUser(resp?.data)
         })
     }, [])
     return(
         <Grid container item>
             <Grid item container direction='column' py='24px' px='36px'>
-                <ProfileComponent />
+                <ProfileComponent data={user} />
             </Grid>
         </Grid>
     )

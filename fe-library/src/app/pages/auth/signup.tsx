@@ -13,7 +13,7 @@ import { SIGNUP_SCHEMA } from './misc/validation/auth.misc';
 export function SignUp() {
     const dispatch = useDispatch();
     const nav = useNavigate();
-    const userCreation = (data: { email: string, password: string }) => {
+    const userCreation = (data: { email: string, password: string, username: string }) => {
         AuthFacade.signUp(data).then((res) => {
             if ( res ) {
                 dispatch( userLogin( data ) as keyof unknown );
@@ -30,10 +30,10 @@ export function SignUp() {
                     </Grid>
                     <Grid item container py='22px'>
                         <Formik
-                            initialValues={ { email: '', password: '', cPassword: '' } }
+                            initialValues={ { email: '', password: '', cPassword: '', username: '' } }
                             validationSchema={SIGNUP_SCHEMA}
                             onSubmit={ ( values ) => {
-                                userCreation({ email: values.email, password: values.password })
+                                userCreation({ email: values.email, username:values.username, password: values.password })
                             } }
                         >
                             { ( { handleSubmit, handleChange, values, errors, touched, handleBlur } ) =>
@@ -47,6 +47,17 @@ export function SignUp() {
                                             error={!!(touched.email && errors.email)}
                                             helperText={touched.email && errors.email ? errors.email : ''}
                                             label='Email'/>
+
+                                    </Box>
+                                    <Box py='12px'>
+                                        <Input
+                                            name='username'
+                                            onChange={ handleChange }
+                                            value={ values.username }
+                                            onBlur={ handleBlur }
+                                            error={!!(touched.username && errors.username)}
+                                            helperText={touched.username && errors.username ? errors.username : ''}
+                                            label='Username'/>
 
                                     </Box>
                                     <Box py='12px'>
