@@ -1,21 +1,22 @@
 import { Grid } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { ProfileComponent } from '../../components/profile-component/profile.component';
 import { ProfileFacade } from '../../services/facade-service/user-facades';
+import { selectCurrentUser } from '../../services/states/credential-state/credential.slice';
 import { Button } from '../../shared/components/button/button.component';
 import { SharedModule } from '../../shared/components/module/shared.module';
 import { EditProfile } from './component/edit.component';
 
 export function Profile() {
-
-    const [profile, setProfile] = useState<any>();
     const [edit, setEdit] = useState<boolean>(false);
-    useEffect(() => {
-        ProfileFacade.fetchProfile().then((resp: any) => {
-            setProfile(resp.data);
-        })
-    }, []);
+    // useEffect(() => {
+    //     ProfileFacade.fetchProfile().then((resp: any) => {
+    //         setProfile(resp.data);
+    //     })
+    // }, []);
+    const profile = useSelector(selectCurrentUser);
     const onEdit = () => {
         setEdit(!edit);
     }

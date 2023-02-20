@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { theme } from '../../../assest/theme';
 import { PROFILE_CONSTANT } from '../../pages/profile/profile.constant';
 import { Typography } from '../../shared/components/typography/typography.component';
+import { ProfileImage } from '../../shared/utils/shared.utils';
 import { ProfileContainer } from '../profile-image/profile-image.style';
 
 export function ProfileComponent(props: any) {
@@ -14,11 +15,11 @@ export function ProfileComponent(props: any) {
                    item
                    xs={2}
                    borderRadius={50}
-                   border={`4px solid
-                    ${theme('light').palette.grey.A100}`}
-                   width='180px'
-                   height='190px'>
-                   <img src='../../../../images/reading-glasses-animate.svg' width='100%' height='100%' className='object-fit--cover'/>
+                   // border={`4px solid
+                   //  ${theme('light').palette.grey.A100}`}
+                   width='160px'
+                   height='200px'>
+                   <img src={ProfileImage} width='100%' height='100%' className='object-fit--cover border-radius-full'/>
                </ProfileContainer>
                <Grid item container justifyContent='center' py='32px'>
                    <Typography label={props?.data?.username?.toUpperCase() || 'username'} variant='body1' fontSize={18} fontWeight='500' />
@@ -31,7 +32,11 @@ export function ProfileComponent(props: any) {
                                 <Box pr='4px'>
                                     <Typography variant='body1' label={`${items.label}: `} fontWeight='bold' />
                                 </Box>
-                                <Typography variant='body1' label={` ${props?.data?.[items.value]}`} />
+                                {
+                                    items.value === 'name'? <Typography variant='body1' label={` ${props?.data?.['firstName']} ${props?.data?.['lastName']}`} /> :
+                                        <Typography variant='body1' label={` ${props?.data?.[items.value]}`} />
+
+                                }
                             </Grid>
                            )
                        }

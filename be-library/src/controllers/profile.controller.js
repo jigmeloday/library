@@ -16,11 +16,13 @@ exports.update_profile = (req, res, next) => {
     const id = req.params.id;
     const updateVal = req.body;
 
-    Profile.updateOne({ _id: id }, updateVal )
+    Profile.updateOne({ uid: id }, { $set: updateVal } )
         .exec()
         .then((resp) =>{
             if (resp) {
-                res.status(201).json({profile: resp})
+                Profile.findOne({uid: id }).exec().then((respond) => {
+                    res.status(201).json(respond)
+                })
             }else{
                 res.status(400).json({error: 'not working'})
             }
