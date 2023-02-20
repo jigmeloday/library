@@ -35,7 +35,7 @@ export function HeaderComponent() {
                     Logo
                 </Grid>
                 <Grid item container xs={7} >
-                   <Grid item container direction='row' xs={9} alignItems='center' justifyContent='space-around'>
+                   <Grid item container direction='row' xs={9} justifyContent='end' alignItems='center'  gap='18px'>
 
                              {
                                  NAVIGATION.map(({ id, path, label }) =>
