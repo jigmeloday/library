@@ -11,11 +11,11 @@ export function EditProfile( props: any ) {
     const dispatch = useDispatch();
     const profile = useSelector(selectCurrentUser);
     const update = useSelector(selectUpdateState);
-    console.log(profile)
+
     return (
         <Grid container item py='12px'>
             <Formik
-                initialValues={ { username: profile?.userName || '', firstName: profile?.firstName || '', lastName: profile?.lastName || '' } }
+                initialValues={ { username: profile?.username || '', firstName: profile?.firstName || '', lastName: profile?.lastName || '' } }
                 onSubmit={ (values) => {
                     const payload = {
                         data: values,
