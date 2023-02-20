@@ -3,6 +3,7 @@ import { memo } from 'react';
 import { theme } from '../../../assest/theme';
 import { PROFILE_CONSTANT } from '../../pages/profile/profile.constant';
 import { Typography } from '../../shared/components/typography/typography.component';
+import { ProfileImage } from '../../shared/utils/shared.utils';
 import { ProfileContainer } from '../profile-image/profile-image.style';
 
 export function ProfileComponent(props: any) {
@@ -18,7 +19,7 @@ export function ProfileComponent(props: any) {
                     ${theme('light').palette.grey.A100}`}
                    width='180px'
                    height='190px'>
-                   <img src='../../../../images/reading-glasses-animate.svg' width='100%' height='100%' className='object-fit--cover'/>
+                   <img src={ProfileImage} width='100%' height='100%' className='object-fit--cover'/>
                </ProfileContainer>
                <Grid item container justifyContent='center' py='32px'>
                    <Typography label={props?.data?.username?.toUpperCase() || 'username'} variant='body1' fontSize={18} fontWeight='500' />
