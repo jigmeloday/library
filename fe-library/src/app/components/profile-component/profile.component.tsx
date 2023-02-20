@@ -15,11 +15,11 @@ export function ProfileComponent(props: any) {
                    item
                    xs={2}
                    borderRadius={50}
-                   border={`4px solid
-                    ${theme('light').palette.grey.A100}`}
-                   width='180px'
-                   height='190px'>
-                   <img src={ProfileImage} width='100%' height='100%' className='object-fit--cover'/>
+                   // border={`4px solid
+                   //  ${theme('light').palette.grey.A100}`}
+                   width='160px'
+                   height='200px'>
+                   <img src={ProfileImage} width='100%' height='100%' className='object-fit--cover border-radius-full'/>
                </ProfileContainer>
                <Grid item container justifyContent='center' py='32px'>
                    <Typography label={props?.data?.username?.toUpperCase() || 'username'} variant='body1' fontSize={18} fontWeight='500' />
