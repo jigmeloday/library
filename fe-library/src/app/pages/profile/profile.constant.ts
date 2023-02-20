@@ -1,3 +1,7 @@
+import {
+    lazy
+} from '../../../../../../../../../../Applications/WebStorm.app/Contents/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/react';
+
 export const PROFILE_CONSTANT = [
     {
         label: 'Email',
@@ -12,6 +16,10 @@ export const PROFILE_CONSTANT = [
     {
         label: 'Country',
         value: 'country',
-        id: '2',
+        id: '3',
+    }, {
+        label: 'Name',
+        value: 'name',
+        id: '4'
     }
 ]
