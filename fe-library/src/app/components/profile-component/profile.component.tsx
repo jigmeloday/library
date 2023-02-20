@@ -31,7 +31,11 @@ export function ProfileComponent(props: any) {
                                 <Box pr='4px'>
                                     <Typography variant='body1' label={`${items.label}: `} fontWeight='bold' />
                                 </Box>
-                                <Typography variant='body1' label={` ${props?.data?.[items.value]}`} />
+                                {
+                                    items.value === 'name'? <Typography variant='body1' label={` ${props?.data?.['firstName']} ${props?.data?.['lastName']}`} /> :
+                                        <Typography variant='body1' label={` ${props?.data?.[items.value]}`} />
+
+                                }
                             </Grid>
                            )
                        }

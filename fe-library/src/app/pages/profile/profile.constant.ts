@@ -4,22 +4,23 @@ import {
 
 export const PROFILE_CONSTANT = [
     {
+        label: 'Name',
+        value: 'name',
+        id: '1'
+    },
+    {
         label: 'Email',
         value: 'email',
-        id: '1',
+        id: '2',
     },
     {
         label: 'Phone',
         value: 'phone',
-        id: '2',
+        id: '3',
     },
     {
         label: 'Country',
         value: 'country',
-        id: '3',
-    }, {
-        label: 'Name',
-        value: 'name',
-        id: '4'
-    }
+        id: '4',
+    },
 ]
