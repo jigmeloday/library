@@ -49,8 +49,7 @@ export function AuthorListing() {
                             </Box>
                         </Grid>
                         <Grid item container direction='row' justifyContent='space-around'>
-                            <Button label='Accept' variant='outlined'/>
-                            <Button label='Recject' variant='contained'/>
+                            <Button label='DELETE' variant='outlined'/>
                         </Grid>
                     </ReaderCard>
                 )
