@@ -20,7 +20,9 @@ exports.update_profile = (req, res, next) => {
         .exec()
         .then((resp) =>{
             if (resp) {
-                res.status(201).json(resp)
+                Profile.findOne({uid: id }).exec().then((respond) => {
+                    res.status(201).json(respond)
+                })
             }else{
                 res.status(400).json({error: 'not working'})
             }
