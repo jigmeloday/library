@@ -44,6 +44,7 @@ exports.get_my_request = async () => {
     try{
         // const token = req.headers.authorization.split(" ")[1];
         // const readerID = jwt.verify(token, process.env.JWT_KEY).id;
+
         const requestedBook = await Reader.find();
         const bookArray = [];
         for( const book of requestedBook) {
