@@ -52,6 +52,5 @@ _`library/<feature_name>`_
 
 
 ### Folder Structure for components
- There are two folder one is fe-library and other one is be-library. All fe related code 
- can be found under fe-library and for be you can find under be-library.
+ There are two folders: 'fe-library' and 'be-library.' The 'fe-library' folder contains all the front-end (FE) related code, while the 'be-library' folder houses the back-end (BE) related code.
  
