@@ -6,7 +6,7 @@
 
 [//]: # (#)
 ### Hi,
-this is online library app. I made this app to learn nodejs with React ts. For now
+This is online library app. I made this app to learn nodejs with React ts. For now
 this app is mainly for showing books, sharing books, posting book, creating user, searching prefect book to read.
 ***
 
