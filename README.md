@@ -12,7 +12,6 @@ This is an online library app that I developed to enhance my skills in Node.js w
 ## Setting up development environment
 Run the following commands on repo root for FE
 > _yarn install_
->
 Run the following commands on repo root for BE
 > _npm install_
 
