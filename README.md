@@ -33,6 +33,7 @@ In a Monorepo, it becomes necessary to have some pattern to name your branches, 
 _`library/<feature_name>`_
 
 > e.g. library/feature-name
+>
 > 
 **For BE**
 
