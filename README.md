@@ -1,8 +1,6 @@
 [//]: # ([Branching Diagram]&#40;https://app.diagrams.net/#G1M2D-E3kYp3eJ8nh9VBtSrSacnBPrBrdm&#41;)
 
 [//]: # (#)
-
-
 [//]: # ([FEATURE]&#40;https://docs.google.com/document/d/1yl9_YcareOgYXOy1AfCAiB1tejD6-XeAJ9LHVjZfQ7Y/edit&#41;)
 
 [//]: # (#)
